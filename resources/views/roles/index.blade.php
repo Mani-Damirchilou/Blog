@@ -12,7 +12,7 @@
             <tr>
                 <th scope="col">شناسه</th>
                 <th scope="col">نام</th>
-                <th scope="col">مجوز ها</th>
+                <th scope="col">مجوز (ها)</th>
                 <th scope="col">عملیات</th>
             </tr>
             </thead>

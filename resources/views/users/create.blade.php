@@ -24,6 +24,18 @@
             {{$message}}
         </div>
         @enderror
+        <select name="role" id="" class="form-select @error('role') is-invalid @enderror">
+            <option value="" disabled selected>انتخاب نقش ...</option>
+              @foreach($roles as $role)
+                <option value="{{$role->name}}">{{$role->name}}</option>
+              @endforeach
+            </select>
+        @error('role')
+        <div class="invalid-feedback m-0 text-center">
+            {{$message}}
+        </div>
+        @enderror
+
     </form>
     <div class="card-footer d-flex justify-content-center">
         <button class="btn btn-success px-5" form="create">ثبت</button>

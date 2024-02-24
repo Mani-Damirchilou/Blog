@@ -14,6 +14,7 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
+        'مشاهده داشبرد',
           'مشاهده لیست کاربران',
           'ساخت کاربر',
           'ویرایش کاربر',

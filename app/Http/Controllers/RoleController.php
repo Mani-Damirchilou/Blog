@@ -20,7 +20,8 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        return view('roles.edit',['role' => $role,'permissions' => Permission::all()]);
+        $permissions = Permission::all();
+        return view('roles.edit',compact('permissions','role'));
     }
 
     public function update(Role $role,UpdateRoleRequest $request)

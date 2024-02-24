@@ -187,7 +187,8 @@ return [
         'last_name' => 'نام خانوادگی',
         'password' => 'رمز عبور',
         'password_confirmation' => 'تاییدیه رمز عبور',
-        'phone_number' => 'شماره تلفن'
+        'phone_number' => 'شماره تلفن',
+        'role' => 'نقش'
     ],
 
 ];

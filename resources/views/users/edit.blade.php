@@ -18,6 +18,16 @@
                 {{$message}}
             </div>
             @enderror
+            <select name="role" id="" class="form-select @error('role') is-invalid @enderror">
+                @foreach($roles as $role)
+                    <option {{$user->hasRole($role) ? 'selected' : ''}} value="{{$role->name}}">{{$role->name}}</option>
+                @endforeach
+            </select>
+            @error('role')
+            <div class="invalid-feedback m-0 text-center">
+                {{$message}}
+            </div>
+            @enderror
         </form>
         <div class="card-footer d-flex justify-content-center">
             <button class="btn btn-primary px-5" form="update">ویرایش</button>

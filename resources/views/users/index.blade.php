@@ -13,6 +13,7 @@
             <th scope="col">شناسه</th>
             <th scope="col">نام</th>
             <th scope="col">ایمیل</th>
+            <th scope="col">نقش</th>
             <th scope="col"> تاریخ عضویت </th>
             <th scope="col"> عملیات </th>
         </tr>
@@ -23,6 +24,13 @@
             <th scope="row">{{$user->id}}</th>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
+            <td>
+                @if(!$user->roles->isEmpty())
+                    {{implode(',',$user->roles->pluck('name')->toArray())}}
+                @else
+                    -
+                @endif
+            </td>
             <td>{{$user->created_at}}</td>
             <td>
                 @can(['ویرایش کاربر','update'],$user)
