@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware('auth')->group(function (){
 
+    Route::prefix('panel')->group(function (){
+       Route::view('','panel.index')->name('panel.index');
+    });
+
+});
 
 
 require __DIR__.'/auth.php';
