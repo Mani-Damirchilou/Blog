@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="rtl" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,7 +10,7 @@
         @yield('title')
     </title>
 </head>
-<body>
+<body class="user-select-none">
 @yield('body')
 </body>
 </html>

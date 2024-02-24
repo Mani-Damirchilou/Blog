@@ -1,36 +1,49 @@
 @extends('layouts.panel')
 @section('header')
-    <h4>ویرایش کاربر</h4>
+    <span class="fs-6">کاربران > ویرایش</span>
+    <a href="{{route('users.index')}}" class="link-dark" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+        <i class="bi bi-arrow-left"></i>
+    </a>
 @endsection
 @section('content')
-    <div class="card">
-        <form method="POST" action="{{route('users.update',$user->id)}}" class="card-body d-flex justify-content-center flex-column gap-4" id="update">
-            @csrf
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="نام کاربری ..." value="{{old('name',$user->name)}}">
-            @error('name')
-            <div class="invalid-feedback m-0 text-center">
-                {{$message}}
-            </div>
-            @enderror
-            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="ایمیل ..." value="{{old('email',$user->email)}}">
-            @error('email')
-            <div class="invalid-feedback m-0 text-center">
-                {{$message}}
-            </div>
-            @enderror
-            <select name="role" id="" class="form-select @error('role') is-invalid @enderror">
-                @foreach($roles as $role)
-                    <option {{$user->hasRole($role) ? 'selected' : ''}} value="{{$role->name}}">{{$role->name}}</option>
-                @endforeach
-            </select>
-            @error('role')
-            <div class="invalid-feedback m-0 text-center">
-                {{$message}}
-            </div>
-            @enderror
-        </form>
-        <div class="card-footer d-flex justify-content-center">
-            <button class="btn btn-primary px-5" form="update">ویرایش</button>
+    <form class="card" method="POST" action="{{route('users.update',$user->id)}}">
+        @csrf
+        <div class="card-header fs-4">
+            ویرایش کاربر
         </div>
-    </div>
+        <div class="card-body row g-2">
+            <div class="col-sm-6">
+                <input type="text" name="name" placeholder="نام ..." value="{{old('name',$user->name)}}" class="form-control @error('name') is-invalid @enderror">
+                @error('name')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+            <div class="col-sm-6">
+                <input type="email" name="email"  placeholder="ایمیل ..." value="{{old('email',$user->email)}}" class="form-control @error('email') is-invalid @enderror">
+                @error('email')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+            <div class="col-12">
+                <select name="role" class="form-select @error('role') is-invalid @enderror">
+                    <option value="" {{$user->roles->isEmpty() ? 'selected' : ''}}>بدون نقش</option>
+                    @foreach($roles as $role)
+                        <option value="{{$role->name}}" {{$user->hasRole($role) ? 'selected' : ''}}>{{$role->name}}</option>
+                    @endforeach
+                </select>
+                @error('role')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary">ویرایش</button>
+        </div>
+    </form>
 @endsection

@@ -1,21 +1,19 @@
 <?php
 
-namespace App\View\Components\Panel\Dashboard;
+namespace App\View\Components\Panel;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class UsersCount extends Component
+class Navbar extends Component
 {
-    public $users;
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        $this->users = User::count();
+        //
     }
 
     /**
@@ -23,6 +21,6 @@ class UsersCount extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.panel.dashboard.users-count');
+        return view('components.panel.navbar');
     }
 }

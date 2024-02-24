@@ -1,44 +1,57 @@
 @extends('layouts.panel')
 @section('header')
-    <h4>کاربر جدید</h4>
+    <span class="fs-6">کاربران > جدید</span>
+    <a href="{{route('users.index')}}" class="link-dark" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+        <i class="bi bi-arrow-left"></i>
+    </a>
 @endsection
 @section('content')
-<div class="card">
-    <form method="POST" action="{{route('users.store')}}" class="card-body d-flex justify-content-center flex-column gap-4" id="create">
+    <form class="card" method="POST" action="{{route('users.store')}}">
         @csrf
-        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="نام کاربری ..." value="{{old('name')}}">
-        @error('name')
-        <div class="invalid-feedback m-0 text-center">
-            {{$message}}
+        <div class="card-header fs-4">
+            کاربر جدید
         </div>
-        @enderror
-        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="ایمیل ..." value="{{old('email')}}">
-        @error('email')
-        <div class="invalid-feedback m-0 text-center">
-            {{$message}}
+        <div class="card-body row g-2">
+            <div class="col-sm-6">
+                <input type="text" name="name" placeholder="نام ..." value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
+                @error('name')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+            <div class="col-sm-6">
+                <input type="email" name="email"  placeholder="ایمیل ..." value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror">
+                @error('email')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+            <div class="col-sm-6">
+                <input type="password" name="password"  placeholder="رمز عبور ..." value="{{old('password')}}" class="form-control @error('password') is-invalid @enderror">
+                @error('password')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+            <div class="col-sm-6">
+                <select name="role" class="form-select @error('role') is-invalid @enderror">
+                    <option selected value="">بدون نقش</option>
+                    @foreach($roles as $role)
+                        <option value="{{$role->name}}">{{$role->name}}</option>
+                    @endforeach
+                </select>
+                @error('role')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
         </div>
-        @enderror
-        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="رمز عبور ...">
-        @error('password')
-        <div class="invalid-feedback m-0 text-center">
-            {{$message}}
+        <div class="card-footer">
+            <button class="btn btn-success">ثبت</button>
         </div>
-        @enderror
-        <select name="role" id="" class="form-select @error('role') is-invalid @enderror">
-            <option value="" disabled selected>انتخاب نقش ...</option>
-              @foreach($roles as $role)
-                <option value="{{$role->name}}">{{$role->name}}</option>
-              @endforeach
-            </select>
-        @error('role')
-        <div class="invalid-feedback m-0 text-center">
-            {{$message}}
-        </div>
-        @enderror
-
     </form>
-    <div class="card-footer d-flex justify-content-center">
-        <button class="btn btn-success px-5" form="create">ثبت</button>
-    </div>
-</div>
 @endsection

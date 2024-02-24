@@ -1,21 +1,22 @@
 @extends('root')
 @section('title','پنل مدیریت')
 @section('body')
-<div class="d-flex bg-dark-subtle overflow-hidden" style="height: 100vh">
-    <x-panel.sidebar/>
-    <div class="bg-light shadow-lg rounded-4 p-4 m-4 w-100 overflow-auto d-flex flex-column gap-4" >
+    <div style="height: 100vh" class="d-flex flex-column">
+        <x-panel.navbar/>
 
-        <div class="d-md-none">
-            <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#sidebar"><i class="bi bi-list"></i></button>
-            <hr class="mb-0">
-        </div>
+        <div class="h-100 d-flex overflow-hidden">
 
-            <div class="d-flex justify-content-between align-items-baseline px-4">
-                @yield('header')
+            <x-panel.sidebar/>
+            <div class="w-100 d-flex flex-column border-top-0 border-start-0 border-bottom-0 border-end ">
+                <div class="border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                    @yield('header')
+                </div>
+                <div class="p-4 h-100 overflow-auto">
+                @yield('content')
+                </div>
             </div>
 
-        <hr class="m-0">
-        @yield('content')
+        </div>
+
     </div>
-</div>
 @endsection

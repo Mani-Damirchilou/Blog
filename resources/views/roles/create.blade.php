@@ -1,28 +1,36 @@
 @extends('layouts.panel')
 @section('header')
-    <h4>نقش جدید</h4>
+    <span class="fs-6">نقش ها > جدید</span>
+    <a href="{{route('roles.index')}}" class="link-dark" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+        <i class="bi bi-arrow-left"></i>
+    </a>
 @endsection
 @section('content')
-    <div class="card">
-        <form method="POST" action="{{route('roles.store')}}" class="card-body d-flex justify-content-center flex-column gap-4" id="create">
-            @csrf
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="نام نقش ..." value="{{old('name')}}">
-            @error('name')
-            <div class="invalid-feedback m-0 text-center">
-                {{$message}}
+    <form class="card" method="POST" action="{{route('roles.store')}}">
+        @csrf
+        <div class="card-header fs-4">
+            نقش جدید
+        </div>
+        <div class="card-body row g-2">
+            <div>
+                <input type="text" name="name" placeholder="نام ..." value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
+                @error('name')
+                <div class="invalid-feedback ">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
-            @enderror
-            <div class="row">
+            <hr>
+            دسترسی ها :
             @foreach($permissions as $permission)
-                <div class="col-6 text-center">
-                    <input type="checkbox" value="{{$permission->name}}" name="permissions[]" id="{{$permission->name}}" class="form-check-input">
+                <div class="d-flex gap-2">
+                    <input type="checkbox" name="permissions[]" value="{{$permission->name}}" id="{{$permission->name}}" class="form-check-input">
                     <label for="{{$permission->name}}">{{$permission->name}}</label>
                 </div>
             @endforeach
-            </div>
-        </form>
-        <div class="card-footer d-flex justify-content-center">
-            <button class="btn btn-success px-5" form="create">ثبت</button>
         </div>
-    </div>
+        <div class="card-footer">
+            <button class="btn btn-success">ثبت</button>
+        </div>
+    </form>
 @endsection

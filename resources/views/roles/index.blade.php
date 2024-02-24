@@ -1,48 +1,73 @@
 @extends('layouts.panel')
 @section('header')
-    <h4>نقش ها</h4>
+    <span class="fs-6">نقش ها > لیست همه</span>
     @can('ساخت نقش')
-        <a href="{{route('roles.create')}}" class="btn btn-primary rounded-circle" data-bs-toggle="tooltip" data-bs-title="نقش جدید" data-bs-placement="bottom"><i class="bi bi-plus fs-5"></i></a>
+        <a href="{{route('roles.create')}}" data-bs-toggle="tooltip" data-bs-title="نقش جدید" class="btn btn-sm rounded-3 btn btn-primary"><i class="bi bi-plus "></i></a>
     @endcan
 @endsection
 @section('content')
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered text-center">
-            <thead class="table-primary">
-            <tr>
-                <th scope="col">شناسه</th>
-                <th scope="col">نام</th>
-                <th scope="col">مجوز (ها)</th>
-                <th scope="col">عملیات</th>
-            </tr>
-            </thead>
-            <tbody class="table-group-divider">
-            @foreach($roles as $role)
-                <tr>
-                    <th scope="row">{{$role->id}}</th>
-                    <td>{{$role->name}}</td>
-                    <td>
-                        @if(!$role->permissions->isEmpty())
-                        {{implode(' , ',$role->permissions->pluck('name')->toArray())}}
-                        @else
-                            -
-                        @endif
-                    </td>
-                    <td>
-                        @can('ویرایش نقش')
-                            <a href="{{route('roles.edit',$role->id)}}" class="link-primary"><i class="bi bi-pencil-square"></i></a>
-                        @endcan
-                        |
-                            @can('حذف نقش')
-                                <a href="{{route('roles.delete',$role->id)}}" class="link-danger"><i class="bi bi-trash"></i></a>
-                            @endcan
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
-    <div class="d-flex justify-content-center" dir="ltr">
-        {{$roles->links()}}
+    <div class="card">
+        <div class="card-header fs-4">
+            لیست نقش ها
+        </div>
+        <div class="card-body table-responsive">
+            @if($roles->isEmpty())
+                <div class="d-flex flex-column justify-content-center align-items-center fs-5 gap-4">
+                <span>
+                هیچ نقشی ثبت نشده است !
+                </span>
+                    @can('ساخت نقش')
+                        <a href="{{route('roles.create')}}"  class="btn rounded-3 btn btn-primary">ساخت نقش</a>
+                    @endcan
+                </div>
+            @else
+                <table class="table text-center table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">نام</th>
+                        <th scope="col">دسترسی (ها)</th>
+                        <th scope="col">تاریخ ساخت</th>
+                        <th scope="col">اقدامات</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+
+                    @foreach($roles as $role)
+                        <tr>
+                            <th>{{$role->id}}</th>
+                            <td>{{$role->name}}</td>
+                            <td>
+                                @if(!$role->permissions->isEmpty())
+                                    {{implode(' , ',$role->permissions->pluck('name')->toArray())}}
+                                @else
+                                    -
+                                @endif
+                            </td>
+                            <td>{{$role->created_at}}</td>
+                            <td class="d-flex gap-2 justify-content-center">
+                                @can('ویرایش نقش')
+                                    <a href="{{route('roles.edit',$role->id)}}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                                @else
+                                    -
+                                @endcan
+                                @can('حذف نقش')
+                                    <a href="{{route('roles.delete',$role->id)}}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                                @else
+                                    -
+                                @endcan
+                            </td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+                </table>
+            @endif
+        </div>
+        @if($roles->hasPages())
+            <div class="card-footer d-flex justify-content-center " dir="ltr">
+                {{$roles->links()}}
+            </div>
+        @endif
     </div>
 @endsection
