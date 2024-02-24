@@ -7,7 +7,7 @@
 @endsection
 @section('content')
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered text-center">
         <thead class="table-primary">
         <tr>
             <th scope="col">شناسه</th>

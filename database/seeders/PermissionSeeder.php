@@ -18,6 +18,10 @@ class PermissionSeeder extends Seeder
           'ساخت کاربر',
           'ویرایش کاربر',
           'حذف کاربر',
+            'مشاهده لیست نقش ها',
+            'ساخت نقش',
+            'ویرایش نقش',
+            'حذف نقش'
         ];
         foreach ($permissions as $permission)
             Permission::create(['name' => $permission]);

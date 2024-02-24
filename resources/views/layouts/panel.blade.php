@@ -24,12 +24,18 @@
                 داشبرد
             </a>
 
-            <a href="{{route('users.index')}}" class="text-decoration-none fs-5 @if(\Illuminate\Support\Facades\Route::is('users.index','users.create')) btn btn-primary @else link-dark @endif">
+            @can('مشاهده لیست کاربران')
+            <a href="{{route('users.index')}}" class="text-decoration-none fs-5 @if(\Illuminate\Support\Facades\Route::is('users.index','users.create','users.edit')) btn btn-primary @else link-dark @endif">
                 <i class="bi bi-person"></i>
                 کاربر ها
             </a>
-
-
+            @endcan
+            @can('مشاهده لیست نقش ها')
+            <a href="{{route('roles.index')}}" class="text-decoration-none fs-5 @if(\Illuminate\Support\Facades\Route::is('roles.index','roles.create','roles.edit')) btn btn-primary @else link-dark @endif">
+                <i class="bi bi-person-vcard"></i>
+                نقش ها
+            </a>
+            @endcan
         </div>
 
     </div>
