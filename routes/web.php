@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function (){
 
     Route::prefix('panel')->group(function (){
+
        Route::view('','panel.index')->name('panel.index');
+
+       Route::prefix('users')->controller(UserController::class)->group(function (){
+           Route::view('','users.index',['users' => \App\Models\User::paginate(15)])->name('users.index');
+           Route::view('create','users.create')->name('users.create');
+           Route::post('','store')->name('users.store');
+       });
+
     });
 
 });

@@ -24,20 +24,22 @@
                 داشبرد
             </a>
 
-                <a href="" class="text-decoration-none fs-5 @if(false) btn btn-primary @else link-dark @endif">
-                    <i class="bi bi-person"></i>
-                    کاربر ها
-                </a>
+            <a href="{{route('users.index')}}" class="text-decoration-none fs-5 @if(\Illuminate\Support\Facades\Route::is('users.index','users.create')) btn btn-primary @else link-dark @endif">
+                <i class="bi bi-person"></i>
+                کاربر ها
+            </a>
 
 
         </div>
 
     </div>
-    <div class="bg-light shadow-lg rounded-4 p-4 m-4 w-100 overflow-auto d-flex flex-column" >
-        <div class="d-flex justify-content-between align-items-center px-4">
-            @yield('header')
+    <div class="bg-light shadow-lg rounded-4 p-4 m-4 w-100 overflow- d-flex flex-column gap-4" >
+        <div>
+            <div class="d-flex justify-content-between align-items-center px-4">
+                @yield('header')
+            </div>
+            <hr>
         </div>
-        <hr>
         @yield('content')
     </div>
 </div>
