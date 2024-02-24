@@ -14,7 +14,7 @@
                 خروج از حساب
             </a>
 
-            <div class="bg-light px-2 py-4 rounded-4 d-flex flex-column gap-4  align-items-center ">
+            <div class="bg-light  py-4 rounded-4 d-flex flex-column gap-4  align-items-center ">
                 <div class="d-flex flex-column justify-content-center">
                     <h3>وبلاگ شما</h3>
                     <hr class="my-2">
@@ -24,6 +24,12 @@
                     <i class="bi bi-speedometer2"></i>
                     داشبرد
                 </a>
+                @endcan
+                @can('مشاهده لیست دسته بندی ها')
+                    <a href="{{route('categories.index')}}" class="text-decoration-none fs-5 @if(\Illuminate\Support\Facades\Route::is('categories.index')) btn btn-primary @else link-dark @endif">
+                        <i class="bi bi-bookmark"></i>
+                        دسته بندی ها
+                    </a>
                 @endcan
                 @can('مشاهده لیست کاربران')
                     <a href="{{route('users.index')}}" class="text-decoration-none fs-5 @if(\Illuminate\Support\Facades\Route::is('users.index','users.create','users.edit')) btn btn-primary @else link-dark @endif">

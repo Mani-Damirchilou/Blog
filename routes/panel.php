@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 
@@ -57,6 +59,29 @@ Route::prefix('panel')->group(function (){
 
         });
 
+    });
+
+    Route::prefix('categories')->controller(CategoryController::class)->group(function (){
+
+        Route::view('','categories.index',['categories' => \App\Models\Category::paginate(15)])->name('categories.index')->middleware('permission:مشاهده لیست دسته بندی ها');
+
+        Route::middleware('permission:ساخت دسته بندی')->group(function (){
+
+            Route::view('create','categories.create')->name('categories.create');
+            Route::post('','store')->name('categories.store');
+
+        });
+
+        Route::middleware('permission:ویرایش دسته بندی')->prefix('{category:id}')->group(function (){
+
+            Route::get('edit','edit')->name('categories.edit');
+            Route::post('update','update')->name('categories.update');
+
+        });
+
+        Route::middleware('permission:حذف دسته بندی')->prefix('{category:id}')->group(function (){
+           Route::get('delete','delete')->name('categories.delete');
+        });
     });
 
 });
