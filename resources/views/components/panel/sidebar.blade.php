@@ -3,7 +3,7 @@
         <button class="btn-close m-0 me-auto" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"></button>
     </div>
     <div class="offcanvas-body">
-        <div class="text-break  d-flex flex-column align-items-start ps-md-4 py-md-5 gap-4 overflow-auto text-nowrap" >
+        <div class="text-break  d-flex flex-column align-items-start ps-md-4 py-md-3 gap-4 overflow-auto text-nowrap" >
 
             @can('مشاهده داشبرد')
                 <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('panel.index')) me-2 link-primary @endif" href="{{route('panel.index')}}">

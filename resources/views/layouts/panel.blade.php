@@ -11,7 +11,7 @@
                 <div class="border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
                     @yield('header')
                 </div>
-                <div class="p-4 h-100 overflow-auto">
+                <div class="p-4 h-100 overflow-auto d-flex flex-column gap-4">
                 @yield('content')
                 </div>
             </div>
