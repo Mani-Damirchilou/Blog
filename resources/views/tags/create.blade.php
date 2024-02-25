@@ -1,17 +1,17 @@
 @extends('layouts.panel')
 @section('header')
-    <span class="fs-6">دسته بندی ها > جدید</span>
-    @can('مشاهده لیست دسته بندی ها')
+    <span class="fs-6">برچسب ها > جدید</span>
+    @can('مشاهده لیست برچسب ها')
         <a href="{{route('tags.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
             <i class="bi bi-arrow-left"></i>
         </a>
     @endcan
 @endsection
 @section('content')
-    <form class="card" method="POST" action="{{route('categories.store')}}">
+    <form class="card" method="POST" action="{{route('tags.store')}}">
         @csrf
         <div class="card-header fs-4">
-            دسته بندی جدید
+            برچسب جدید
         </div>
         <div class="card-body row g-2">
            <div class="col-sm-6">

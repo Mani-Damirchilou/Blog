@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,29 @@ Route::prefix('panel')->group(function (){
 
         Route::middleware('permission:حذف دسته بندی')->prefix('{category:id}')->group(function (){
            Route::get('delete','delete')->name('categories.delete');
+        });
+    });
+
+    Route::prefix('tags')->controller(TagController::class)->group(function (){
+
+        Route::view('','tags.index',['tags' => \App\Models\Tag::paginate(15)])->name('tags.index')->middleware('permission:مشاهده لیست برچسب ها');
+
+        Route::middleware('permission:ساخت برچسب')->group(function (){
+
+            Route::view('create','tags.create')->name('tags.create');
+            Route::post('','store')->name('tags.store');
+
+        });
+
+        Route::middleware('permission:ویرایش برچسب')->prefix('{tag:id}')->group(function (){
+
+            Route::get('edit','edit')->name('tags.edit');
+            Route::post('update','update')->name('tags.update');
+
+        });
+
+        Route::middleware('permission:حذف برچسب')->prefix('{tag:id}')->group(function (){
+           Route::get('delete','delete')->name('tags.delete');
         });
     });
 

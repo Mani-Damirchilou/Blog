@@ -1,9 +1,11 @@
 @extends('layouts.panel')
 @section('header')
     <span class="fs-6">کاربران > ویرایش</span>
-    <a href="{{route('users.index')}}" class="link-dark" data-bs-toggle="tooltip" data-bs-title="بازگشت">
-        <i class="bi bi-arrow-left"></i>
-    </a>
+    @can('مشاهده لیست کاربران')
+        <a href="{{route('tags.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+    @endcan
 @endsection
 @section('content')
     <form class="card" method="POST" action="{{route('users.update',$user->id)}}">

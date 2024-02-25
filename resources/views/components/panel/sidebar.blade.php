@@ -19,6 +19,13 @@
                 </a>
             @endcan
 
+                @can('مشاهده لیست برچسب ها')
+                    <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('tags.index','tags.edit','tags.create')) me-2 link-primary @endif" href="{{route('tags.index')}}">
+                        <i class="bi bi-tag"></i>
+                        برچسب ها
+                    </a>
+                @endcan
+
             @can('مشاهده لیست کاربران')
                 <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('users.index','users.edit','users.create')) me-2 link-primary @endif" href="{{route('users.index')}}">
                     <i class="bi bi-person"></i>

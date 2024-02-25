@@ -1,9 +1,11 @@
 @extends('layouts.panel')
 @section('header')
     <span class="fs-6">نقش ها > جدید</span>
-    <a href="{{route('roles.index')}}" class="link-dark" data-bs-toggle="tooltip" data-bs-title="بازگشت">
-        <i class="bi bi-arrow-left"></i>
-    </a>
+    @can('مشاهده لیست نقش ها')
+        <a href="{{route('tags.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+    @endcan
 @endsection
 @section('content')
     <form class="card" method="POST" action="{{route('roles.store')}}">
