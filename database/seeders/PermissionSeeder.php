@@ -31,6 +31,10 @@ class PermissionSeeder extends Seeder
             'ساخت برچسب',
             'ویرایش برچسب',
             'حذف برچسب',
+            'مشاهده لیست مقالات',
+            'ساخت مقاله',
+            'ویرایش مقاله',
+            'حذف مقاله',
 
         ];
         foreach ($permissions as $permission)

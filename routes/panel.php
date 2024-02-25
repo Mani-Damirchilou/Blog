@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
@@ -107,5 +108,29 @@ Route::prefix('panel')->group(function (){
            Route::get('delete','delete')->name('tags.delete');
         });
     });
+
+    Route::prefix('articles')->controller(ArticleController::class)->group(function (){
+
+        Route::view('','articles.index',['articles' => \App\Models\Article::with('category','user','tags')->paginate(15)])->name('articles.index')->middleware('permission:مشاهده لیست مقالات');
+
+        Route::middleware('permission:ساخت مقاله')->group(function (){
+
+            Route::view('create','articles.create',['tags' => \App\Models\Tag::all(),'categories' => \App\Models\Category::all()])->name('articles.create');
+            Route::post('','store')->name('articles.store');
+
+        });
+
+        Route::middleware('permission:ویرایش مقاله')->prefix('{article:id}')->group(function (){
+
+            Route::get('edit','edit')->name('articles.edit');
+            Route::post('update','update')->name('articles.update');
+
+        });
+
+        Route::middleware('permission:حذف مقاله')->prefix('{article:id}')->group(function (){
+            Route::get('delete','delete')->name('articles.delete');
+        });
+    });
+
 
 });

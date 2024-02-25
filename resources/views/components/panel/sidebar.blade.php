@@ -12,6 +12,13 @@
                 </a>
             @endcan
 
+                @can('مشاهده لیست مقالات')
+                    <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('articles.index','articles.edit','articles.create')) me-2 link-primary @endif" href="{{route('articles.index')}}">
+                        <i class="bi bi-file-earmark-richtext"></i>
+                        مقالات
+                    </a>
+                @endcan
+
             @can('مشاهده لیست دسته بندی ها')
                 <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('categories.index','categories.edit','categories.create')) me-2 link-primary @endif" href="{{route('categories.index')}}">
                     <i class="bi bi-bookmark"></i>

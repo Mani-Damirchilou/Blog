@@ -14,10 +14,10 @@ class StoreCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rules = ['required','string','unique:categories,name'];
+
         return [
-            'name' => $rules,
-            'slug' => $rules,
+            'name' =>  ['required','string','unique:categories,name'],
+            'slug' =>  ['required','string','unique:categories,slug'],
         ];
     }
 }

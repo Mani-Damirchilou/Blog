@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreTagRequest extends FormRequest
+class UpdateArticleRequest extends StoreArticleRequest
 {
 
     /**
@@ -14,10 +15,9 @@ class StoreTagRequest extends FormRequest
      */
     public function rules(): array
     {
-
-        return [
-            'name' => ['required','string','unique:tags,name'],
-            'slug' => ['required','string','unique:tags,slug'],
-        ];
+        return array_merge(parent::rules(),[
+            'title' => ['required','string','min:5','max:50',Rule::unique('articles')->ignore($this->article)],
+            'thumbnail' => ['nullable','image','file'],
+        ]);
     }
 }
