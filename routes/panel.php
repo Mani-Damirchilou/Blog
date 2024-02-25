@@ -23,18 +23,21 @@ Route::prefix('panel')->group(function (){
 
         });
 
-        Route::middleware(['permission:ویرایش کاربر','can:update,user'])->prefix('{user:id}')->group(function (){
+        Route::prefix('{user:id}')->group(function (){
 
-            Route::get('edit','edit')->name('users.edit');
-            Route::post('update','update')->name('users.update');
+            Route::middleware(['permission:ویرایش کاربر','can:update,user'])->group(function (){
+
+                Route::get('edit','edit')->name('users.edit');
+                Route::post('update','update')->name('users.update');
+
+            });
+
+
+                Route::get('delete','delete')->name('users.delete')->middleware(['permission:حذف کاربر','can:delete,user']);
+
 
         });
 
-        Route::middleware(['permission:حذف کاربر','can:delete,user'])->prefix('{user:id}')->group(function (){
-
-            Route::get('delete','delete')->name('users.delete');
-
-        });
     });
 
     Route::prefix('roles')->controller(RoleController::class)->group(function (){
@@ -48,18 +51,19 @@ Route::prefix('panel')->group(function (){
 
         });
 
-        Route::middleware('permission:ویرایش نقش')->prefix('{role:id}')->group(function (){
+        Route::prefix('{role:id}')->group(function (){
 
-            Route::get('edit','edit')->name('roles.edit');
-            Route::post('update','update')->name('roles.update');
+            Route::middleware('permission:ویرایش نقش')->group(function (){
+
+                Route::get('edit','edit')->name('roles.edit');
+                Route::post('update','update')->name('roles.update');
+
+            });
+
+                Route::get('delete','delete')->name('roles.delete')->middleware('permission:حذف نقش');
 
         });
 
-        Route::middleware('permission:حذف نقش')->prefix('{role:id}')->group(function (){
-
-            Route::get('delete','delete')->name('roles.delete');
-
-        });
 
     });
 
@@ -74,16 +78,19 @@ Route::prefix('panel')->group(function (){
 
         });
 
-        Route::middleware('permission:ویرایش دسته بندی')->prefix('{category:id}')->group(function (){
+        Route::prefix('{category:id}')->group(function (){
 
-            Route::get('edit','edit')->name('categories.edit');
-            Route::post('update','update')->name('categories.update');
+            Route::middleware('permission:ویرایش دسته بندی')->group(function (){
+
+                Route::get('edit','edit')->name('categories.edit');
+                Route::post('update','update')->name('categories.update');
+
+            });
+
+                Route::get('delete','delete')->name('categories.delete')->middleware('permission:حذف دسته بندی');
 
         });
 
-        Route::middleware('permission:حذف دسته بندی')->prefix('{category:id}')->group(function (){
-           Route::get('delete','delete')->name('categories.delete');
-        });
     });
 
     Route::prefix('tags')->controller(TagController::class)->group(function (){
@@ -97,16 +104,19 @@ Route::prefix('panel')->group(function (){
 
         });
 
-        Route::middleware('permission:ویرایش برچسب')->prefix('{tag:id}')->group(function (){
+        Route::prefix('{tag:id}')->group(function (){
 
-            Route::get('edit','edit')->name('tags.edit');
-            Route::post('update','update')->name('tags.update');
+            Route::middleware('permission:ویرایش برچسب')->group(function (){
+
+                Route::get('edit','edit')->name('tags.edit');
+                Route::post('update','update')->name('tags.update');
+
+            });
+
+                Route::get('delete','delete')->name('tags.delete')->middleware('permission:حذف برچسب');
 
         });
 
-        Route::middleware('permission:حذف برچسب')->prefix('{tag:id}')->group(function (){
-           Route::get('delete','delete')->name('tags.delete');
-        });
     });
 
     Route::prefix('articles')->controller(ArticleController::class)->group(function (){
@@ -120,16 +130,19 @@ Route::prefix('panel')->group(function (){
 
         });
 
-        Route::middleware('permission:ویرایش مقاله')->prefix('{article:id}')->group(function (){
+        Route::prefix('{article:id}')->group(function (){
 
-            Route::get('edit','edit')->name('articles.edit');
-            Route::post('update','update')->name('articles.update');
+            Route::middleware('permission:ویرایش مقاله')->group(function (){
+
+                Route::get('edit','edit')->name('articles.edit');
+                Route::post('update','update')->name('articles.update');
+
+            });
+
+                Route::get('delete','delete')->name('articles.delete')->middleware('permission:حذف مقاله');
 
         });
 
-        Route::middleware('permission:حذف مقاله')->prefix('{article:id}')->group(function (){
-            Route::get('delete','delete')->name('articles.delete');
-        });
     });
 
 
