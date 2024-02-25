@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" dir="rtl" data-bs-theme="dark">
+<html lang="en" dir="rtl" data-bs-theme="@if(auth()->check())
+{{auth()->user()->dark_mode ? 'dark' : 'light'}}@endif">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"

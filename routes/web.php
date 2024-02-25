@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\DarkModeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware('auth')->group(function (){
+
+    Route::get('/dark-mode/update',[DarkModeController::class,'update'])->name('dark-mode.update');
 
     require __DIR__.'/panel.php';
 

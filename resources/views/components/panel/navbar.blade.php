@@ -17,6 +17,12 @@
                 </button>
                 <ul class="dropdown-menu dropdown-center text-end">
                     <li>
+                        <a href="{{route('dark-mode.update')}}" class="dropdown-item form-check form-switch d-flex align-items-center gap-2 justify-content-center">
+                            <i class="bi bi-moon"></i>
+                            <input type="checkbox" disabled {{auth()->user()->dark_mode ? 'checked' : ''}} class="form-check-input m-0">
+                            <i class="bi bi-sun"></i>
+
+                        </a>
                         <a href="{{route('logout')}}" class="dropdown-item link-danger">
                             <i class="bi bi-power"></i>
                             خروج از حساب
