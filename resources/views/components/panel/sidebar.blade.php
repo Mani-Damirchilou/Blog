@@ -13,38 +13,24 @@
             @endcan
 
                 @can('مشاهده لیست مقالات')
-                    <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('articles.index','articles.edit','articles.create')) me-2 link-primary @endif" href="{{route('articles.index')}}">
-                        <i class="bi bi-file-earmark-richtext"></i>
-                        مقالات
-                    </a>
+                    <x-panel.sidebar.articles-button/>
                 @endcan
 
             @can('مشاهده لیست دسته بندی ها')
-                <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('categories.index','categories.edit','categories.create')) me-2 link-primary @endif" href="{{route('categories.index')}}">
-                    <i class="bi bi-bookmark"></i>
-                    دسته بندی ها
-                </a>
+                <x-panel.sidebar.categories-button/>
             @endcan
 
                 @can('مشاهده لیست برچسب ها')
-                    <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('tags.index','tags.edit','tags.create')) me-2 link-primary @endif" href="{{route('tags.index')}}">
-                        <i class="bi bi-tag"></i>
-                        برچسب ها
-                    </a>
+                    <x-panel.sidebar.tags-button/>
                 @endcan
 
             @can('مشاهده لیست کاربران')
-                <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('users.index','users.edit','users.create')) me-2 link-primary @endif" href="{{route('users.index')}}">
-                    <i class="bi bi-person"></i>
-                    کاربران
-                </a>
+                    <x-panel.sidebar.users-button/>
             @endcan
 
             @can('مشاهده لیست نقش ها')
-                <a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('roles.index','roles.edit','roles.create')) me-2 link-primary @endif" href="{{route('roles.index')}}">
-                    <i class="bi bi-person-vcard"></i>
-                    نقش ها
-                </a>
+                    <x-panel.sidebar.roles-button/>
+
             @endcan
         </div>
 

@@ -5,7 +5,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
-            <span class="navbar-brand">پنل مدیریت</span>
+            <span class="navbar-brand">پنل مدیریت وبلاگ</span>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <button data-bs-target="#sidebar" data-bs-toggle="offcanvas" class="btn btn-sm fs-4 d-md-none"><i class="bi bi-list"></i></button>
