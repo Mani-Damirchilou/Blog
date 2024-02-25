@@ -29,6 +29,7 @@
                         <th scope="col">ایمیل</th>
                         <th scope="col">نقش</th>
                         <th scope="col">حالت شب</th>
+                        <th scope="col">عکس پروفایل</th>
                         <th scope="col">تاریخ عضویت</th>
                         <th scope="col">آخرین بروزرسانی</th>
                         <th scope="col">اقدامات</th>
@@ -49,6 +50,7 @@
                                 @endif
                             </td>
                             <td class="text-{{$user->dark_mode ? 'success' : 'danger'}}">{{$user->dark_mode ? 'فعال' : 'غیر فعال'}}</td>
+                            <td><a href="{{$user->profile}}">مشاهده</a></td>
                             <td>{{$user->created_at_to_persian}}</td>
                             <td>{{$user->updated_at_to_persian}}</td>
                             <td class="d-flex gap-2 justify-content-center">

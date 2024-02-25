@@ -12,7 +12,8 @@
                 </li>
             </ul>
             <div class="dropdown me-auto">
-                <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                <button class="btn dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown">
+                    <img src="{{auth()->user()->profile}}" class="rounded-circle border border-2 " style="width: 25px;height: 25px" alt="">
                     {{auth()->user()->email}}
                 </button>
                 <ul class="dropdown-menu dropdown-center text-end">
