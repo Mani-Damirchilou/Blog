@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Observers\ArticleObserver;
 use App\Traits\HasPersianDateTime;
+use App\Traits\Likeable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use Illuminate\Support\Str;
 #[ObservedBy(ArticleObserver::class)]
 class Article extends Model
 {
-    use HasFactory,HasPersianDateTime;
+    use HasFactory,HasPersianDateTime,Likeable;
 
     protected $fillable = [
         'title','category_id','slug','content','active','thumbnail_path'

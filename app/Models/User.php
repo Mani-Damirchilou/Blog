@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return '/storage/'.Str::substr($this->profile_path,strlen('public/'));
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

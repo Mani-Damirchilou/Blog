@@ -121,7 +121,7 @@ Route::prefix('panel')->group(function (){
 
     Route::prefix('articles')->controller(ArticleController::class)->group(function (){
 
-        Route::view('','articles.index',['articles' => \App\Models\Article::with('category','user','tags')->paginate(15)])->name('articles.index')->middleware('permission:مشاهده لیست مقالات');
+        Route::view('','articles.index',['articles' => \App\Models\Article::with('category','user','tags','likes')->paginate(15)])->name('articles.index')->middleware('permission:مشاهده لیست مقالات');
 
         Route::middleware('permission:ساخت مقاله')->group(function (){
 
