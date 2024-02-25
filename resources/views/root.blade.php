@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="rtl" data-bs-theme="light">
+<html lang="en" dir="rtl" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"

@@ -12,7 +12,7 @@ Route::prefix('panel')->group(function (){
 
     Route::prefix('users')->controller(UserController::class)->group(function (){
 
-        Route::view('','users.index',['users' => \App\Models\User::paginate(15)])->name('users.index')->middleware('permission:مشاهده لیست کاربران');
+        Route::view('','users.index',['users' => \App\Models\User::with('roles')->paginate(15)])->name('users.index')->middleware('permission:مشاهده لیست کاربران');
 
         Route::middleware('permission:ساخت کاربر')->group(function (){
 
@@ -37,7 +37,7 @@ Route::prefix('panel')->group(function (){
 
     Route::prefix('roles')->controller(RoleController::class)->group(function (){
 
-        Route::view('','roles.index',['roles' => \Spatie\Permission\Models\Role::paginate(15)])->name('roles.index')->middleware('permission:مشاهده لیست نقش ها');
+        Route::view('','roles.index',['roles' => \Spatie\Permission\Models\Role::with('permissions')->paginate(15)])->name('roles.index')->middleware('permission:مشاهده لیست نقش ها');
 
         Route::middleware('permission:ساخت نقش')->group(function (){
 
