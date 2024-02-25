@@ -28,6 +28,7 @@
                     <th scope="col">نام</th>
                     <th scope="col">سریال</th>
                     <th scope="col">تاریخ ساخت</th>
+                    <th scope="col">آخرین بروزرسانی</th>
                     <th scope="col">اقدامات</th>
                 </tr>
                 </thead>
@@ -38,7 +39,8 @@
                         <th>{{$category->id}}</th>
                         <td>{{$category->name}}</td>
                         <td>{{$category->slug}}</td>
-                        <td>{{$category->created_at}}</td>
+                        <td>{{$category->created_at_to_persian}}</td>
+                        <td>{{$category->updated_at_to_persian}}</td>
                         <td class="d-flex gap-2 justify-content-center">
                             @can('ویرایش دسته بندی')
                                 <a href="{{route('categories.edit',$category->id)}}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>

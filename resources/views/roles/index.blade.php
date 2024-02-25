@@ -28,6 +28,7 @@
                         <th scope="col">نام</th>
                         <th scope="col">دسترسی (ها)</th>
                         <th scope="col">تاریخ ساخت</th>
+                        <th scope="col">آخرین بروزرسانی</th>
                         <th scope="col">اقدامات</th>
                     </tr>
                     </thead>
@@ -44,7 +45,8 @@
                                     -
                                 @endif
                             </td>
-                            <td>{{$role->created_at}}</td>
+                            <td>{{$role->created_at_to_persian}}</td>
+                            <td>{{$role->updated_at_to_persian}}</td>
                             <td class="d-flex gap-2 justify-content-center">
                                 @can('ویرایش نقش')
                                     <a href="{{route('roles.edit',$role->id)}}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>

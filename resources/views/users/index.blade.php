@@ -29,6 +29,7 @@
                         <th scope="col">ایمیل</th>
                         <th scope="col">نقش</th>
                         <th scope="col">تاریخ عضویت</th>
+                        <th scope="col">آخرین بروزرسانی</th>
                         <th scope="col">اقدامات</th>
                     </tr>
                     </thead>
@@ -46,7 +47,8 @@
                                     -
                                 @endif
                             </td>
-                            <td>{{$user->created_at}}</td>
+                            <td>{{$user->created_at_to_persian}}</td>
+                            <td>{{$user->updated_at_to_persian}}</td>
                             <td class="d-flex gap-2 justify-content-center">
                                 @can(['ویرایش کاربر','update'],$user)
                                     <a href="{{route('users.edit',$user->id)}}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
