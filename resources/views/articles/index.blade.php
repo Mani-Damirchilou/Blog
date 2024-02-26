@@ -67,7 +67,10 @@
                                 {{$article->likes->where('vote',-1)->count()}}
                             </td>
                             <td class="text-{{$article->active ? 'success' : 'danger'}}">{{$article->active ? 'قابل مشاهده' : 'غیرقابل مشاهده'}}</td>
-                            <td><a href="{{$article->thumbnail}}">مشاهده</a></td>
+                            <td><a class="text-decoration-none" href="{{$article->thumbnail}}">
+                                    <i class="bi bi-eye"></i>
+                                    مشاهده
+                                </a></td>
                             <td>{{$article->created_at_to_persian}}</td>
                             <td>{{$article->updated_at_to_persian}}</td>
                             <td class="d-flex gap-2 justify-content-center">
