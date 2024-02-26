@@ -15,7 +15,7 @@ class LatestArticles extends Component
      */
     public function __construct()
     {
-        $this->articles = Article::latest()->take(5)->get();
+        $this->articles = Article::with('user')->latest()->take(5)->get();
     }
 
     /**
