@@ -61,7 +61,7 @@
                                     -
                                 @endcan
                                 @can(['حذف کاربر','delete'],$user)
-                                    <a href="{{route('users.delete',$user->id)}}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                                    <a href="{{route('users.delete',$user->id)}}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
                                     @else
                                     -
                                 @endcan

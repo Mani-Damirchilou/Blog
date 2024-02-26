@@ -50,7 +50,7 @@
                             <td>{{$comment->created_at_to_persian}}</td>
                             <td class="d-flex gap-2 justify-content-center">
                                 @can('حذف نظر')
-                                    <a href="{{route('comments.delete',$comment->id)}}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                                    <a href="{{route('comments.delete',$comment->id)}}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
                                 @else
                                     -
                                 @endcan

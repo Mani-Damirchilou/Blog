@@ -47,7 +47,7 @@
                                 <a href="{{route('categories.edit',$category->id)}}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
                             @endcan
                                 @can('حذف دسته بندی')
-                                    <a href="{{route('categories.delete',$category->id)}}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                                    <a href="{{route('categories.delete',$category->id)}}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
                                 @endcan
                         </td>
                     </tr>
