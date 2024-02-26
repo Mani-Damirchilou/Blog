@@ -1,16 +1,11 @@
-<nav class="navbar navbar-expand-sm border-bottom">
+<nav class="navbar navbar-expand-sm bg-body-tertiary border-bottom">
     <div class="container-fluid">
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbar">
-            <span class="navbar-brand">پنل مدیریت وبلاگ</span>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <button data-bs-target="#sidebar" data-bs-toggle="offcanvas" class="btn btn-sm fs-4 d-md-none"><i class="bi bi-list"></i></button>
-                </li>
-            </ul>
+            <a class="navbar-brand" href="{{route('index')}}">وبلاگ</a>
+            @auth
             <div class="dropdown me-auto">
                 <button class="btn dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown">
                     <img src="{{auth()->user()->profile}}" class="rounded-circle border border-2 " style="width: 25px;height: 25px" alt="">
@@ -22,8 +17,13 @@
                             <i class="bi bi-moon"></i>
                             <input type="checkbox" disabled {{auth()->user()->dark_mode ? 'checked' : ''}} class="form-check-input m-0">
                             <i class="bi bi-sun"></i>
-
                         </a>
+                    @can('مشاهده داشبرد')
+                        <a href="{{route('panel.index')}}" class="dropdown-item">
+                            <i class="bi bi-kanban"></i>
+                            ورود به پنل
+                        </a>
+                    @endcan
                         <a href="{{route('logout')}}" class="dropdown-item link-danger">
                             <i class="bi bi-power"></i>
                             خروج از حساب
@@ -31,6 +31,13 @@
 
                 </ul>
             </div>
+            @endauth
+            @guest
+                <div class="d-flex gap-3 me-auto">
+                    <a href="{{route('login')}}" class="btn btn-primary">ورود</a>
+                    <a href="{{route('register')}}" class="btn btn-primary">ثبت نام</a>
+                </div>
+            @endguest
         </div>
     </div>
 </nav>

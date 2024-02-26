@@ -11,7 +11,7 @@
         @yield('title')
     </title>
 </head>
-<body class="user-select-none">
+<body class="">
 @yield('body')
 </body>
 </html>

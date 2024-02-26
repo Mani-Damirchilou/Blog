@@ -35,6 +35,12 @@
             @can('مشاهده لیست نقش ها')
                     <x-panel.sidebar.roles-button/>
             @endcan
+
+                <a class="btn btn-lg text-danger" href="{{route('index')}}">
+                    <i class="bi bi-arrow-right"></i>
+                    خروج از پنل
+                </a>
+
         </div>
 
     </div>
