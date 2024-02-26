@@ -189,7 +189,15 @@ return [
         'password_confirmation' => 'تاییدیه رمز عبور',
         'phone_number' => 'شماره تلفن',
         'role' => 'نقش',
-        'slug' => 'سریال'
+        'slug' => 'سریال',
+        'category_id' => 'دسته بندی',
+        'title' => 'عنوان',
+        'content' => 'محتوا',
+        'thumbnail' => 'عکس بند انگشتی',
+        'active' => 'وضعیت',
+        'text' => 'متن',
+        'profile' => 'عکس پروفایل',
+        'dark_mode' => 'حالت شب'
     ],
 
 ];
