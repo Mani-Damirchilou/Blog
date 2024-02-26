@@ -1,5 +1,8 @@
 @extends('root')
-@section('title','پنل مدیریت')
+@section('title')
+    پنل مدیریت -
+    @yield('subtitle')
+@endsection
 @section('body')
     <div style="height: 100vh" class="d-flex flex-column">
         <x-panel.navbar/>

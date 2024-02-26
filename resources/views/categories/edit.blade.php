@@ -1,4 +1,5 @@
 @extends('layouts.panel')
+@section('subtitle','دسته بندی ها > ویرایش')
 @section('header')
     <span class="fs-6">دسته بندی ها > ویرایش</span>
     @can('مشاهده لیست دسته بندی ها')

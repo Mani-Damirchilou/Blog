@@ -1,4 +1,5 @@
 @extends('layouts.panel')
+@section('subtitle','مقالات > جدید')
 @section('header')
     <span class="fs-6">مقالات > جدید</span>
     @can('مشاهده لیست مقالات')

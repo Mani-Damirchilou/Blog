@@ -1,4 +1,5 @@
 @extends('layouts.panel')
+@section('subtitle','نظرات > لیست همه')
 @section('header')
     <span class="fs-6">نظرات > لیست همه</span>
 @endsection

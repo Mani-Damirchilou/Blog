@@ -1,4 +1,5 @@
 @extends('layouts.panel')
+@section('subtitle','داشبرد')
 @section('header')
     <span class="fs-6"> داشبرد</span>
     <a href="{{route('panel.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="تازه سازی">

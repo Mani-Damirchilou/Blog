@@ -1,4 +1,5 @@
 @extends('layouts.panel')
+@section('subtitle','برچسب ها > لیست همه')
 @section('header')
     <span class="fs-6">برچسب ها > لیست همه</span>
     @can('ساخت برچسب')
