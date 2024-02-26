@@ -30,8 +30,12 @@
                         <th scope="col">نویسنده</th>
                         <th scope="col">دسته بندی</th>
                         <th scope="col">برچسب (ها)</th>
-                        <th scope="col">پسندیده شده</th>
-                        <th scope="col">پسندیده نشده</th>
+                        <th scope="col">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                        </th>
+                        <th scope="col">
+                            <i class="bi bi-hand-thumbs-down"></i>
+                        </th>
                         <th scope="col">وضعیت</th>
                         <th scope="col">عکس بند انگشتی</th>
                         <th scope="col">تاریخ انتشار</th>
@@ -57,12 +61,9 @@
                             </td>
                             <td>
                                 {{$article->likes->where('vote',1)->count()}}
-                                <i class="bi bi-hand-thumbs-up"></i>
                             </td>
                             <td>
                                 {{$article->likes->where('vote',-1)->count()}}
-                                <i class="bi bi-hand-thumbs-down"></i>
-
                             </td>
                             <td class="text-{{$article->active ? 'success' : 'danger'}}">{{$article->active ? 'قابل مشاهده' : 'غیرقابل مشاهده'}}</td>
                             <td><a href="{{$article->thumbnail}}">مشاهده</a></td>
