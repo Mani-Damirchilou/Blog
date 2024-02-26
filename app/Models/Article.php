@@ -37,4 +37,9 @@ class Article extends Model
     {
         return '/storage/'.Str::substr($this->thumbnail_path,strlen('public/'));
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

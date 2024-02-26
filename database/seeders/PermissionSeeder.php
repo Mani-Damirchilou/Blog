@@ -35,6 +35,9 @@ class PermissionSeeder extends Seeder
             'ساخت مقاله',
             'ویرایش مقاله',
             'حذف مقاله',
+            'مشاهده لیست نظرات',
+            'حذف نظر',
+
 
         ];
         foreach ($permissions as $permission)

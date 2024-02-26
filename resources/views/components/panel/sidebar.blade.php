@@ -16,6 +16,10 @@
                     <x-panel.sidebar.articles-button/>
                 @endcan
 
+                @can('مشاهده لیست نظرات')
+                    <x-panel.sidebar.comments-button/>
+                @endcan
+
             @can('مشاهده لیست دسته بندی ها')
                 <x-panel.sidebar.categories-button/>
             @endcan
@@ -30,7 +34,6 @@
 
             @can('مشاهده لیست نقش ها')
                     <x-panel.sidebar.roles-button/>
-
             @endcan
         </div>
 

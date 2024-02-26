@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -142,6 +143,14 @@ Route::prefix('panel')->group(function (){
                 Route::get('delete','delete')->name('articles.delete')->middleware('permission:حذف مقاله');
 
         });
+
+    });
+
+    Route::prefix('comments')->controller(CommentController::class)->group(function (){
+
+        Route::view('','comments.index',['comments' => \App\Models\Comment::with('article','user','likes')->paginate(15)])->name('comments.index')->middleware('permission:مشاهده لیست نظرات');
+
+                Route::get('{comment:id}/delete','delete')->name('comments.delete')->middleware('permission:حذف نظر');
 
     });
 
