@@ -37,7 +37,7 @@
                     @foreach($comments as $comment)
                         <tr>
                             <th>{{$comment->id}}</th>
-                            <td>{{$comment->user->email}}</td>
+                            <td>{{$comment->user->name}}</td>
                             <td>{{$comment->article->title}}</td>
                             <td>{{$comment->text}}</td>
                             <td>

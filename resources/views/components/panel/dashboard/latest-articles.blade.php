@@ -10,7 +10,6 @@
                 <table class="table text-center table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">عنوان</th>
                         <th scope="col">نویسنده</th>
                         <th scope="col">دسته بندی</th>
@@ -22,7 +21,6 @@
 
                     @foreach($articles as $article)
                         <tr>
-                            <th>{{$article->id}}</th>
                             <td>{{$article->title}}</td>
                             <td>{{$article->user->name}}</td>
                             <td>{{$article->category->name ?? '-'}}</td>
