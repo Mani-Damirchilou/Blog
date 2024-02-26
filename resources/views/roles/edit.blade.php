@@ -2,7 +2,7 @@
 @section('header')
     <span class="fs-6">نقش ها > ویرایش</span>
     @can('مشاهده لیست نقش ها')
-        <a href="{{route('tags.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+        <a href="{{route('roles.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
             <i class="bi bi-arrow-left"></i>
         </a>
     @endcan

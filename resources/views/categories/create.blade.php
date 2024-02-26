@@ -2,7 +2,7 @@
 @section('header')
     <span class="fs-6">دسته بندی ها > جدید</span>
     @can('مشاهده لیست دسته بندی ها')
-        <a href="{{route('tags.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+        <a href="{{route('categories.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
             <i class="bi bi-arrow-left"></i>
         </a>
     @endcan

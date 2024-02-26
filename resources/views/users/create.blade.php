@@ -2,7 +2,7 @@
 @section('header')
     <span class="fs-6">کاربران > جدید</span>
     @can('مشاهده لیست کاربران')
-        <a href="{{route('tags.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
+        <a href="{{route('users.index')}}" class="btn" data-bs-toggle="tooltip" data-bs-title="بازگشت">
             <i class="bi bi-arrow-left"></i>
         </a>
     @endcan
