@@ -18,7 +18,12 @@ class Article extends Model
     protected $fillable = [
         'title','category_id','slug','content','active','thumbnail_path'
     ];
+    protected $appends = [
+        'is_dis_liked_by_user',
+        'is_liked_by_user',
+    ];
 
+    // Relations
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,18 +38,46 @@ class Article extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function getThumbnailAttribute()
-    {
-        return '/storage/'.Str::substr($this->thumbnail_path,strlen('public/'));
-    }
 
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
+    // Scopes
     public function scopeActive($query)
     {
         return $query->where('active',true);
+    }
+
+    // Accessors
+    public function getThumbnailAttribute()
+    {
+        return '/storage/'.Str::substr($this->thumbnail_path,strlen('public/'));
+    }
+   // Eloquent Calls
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    public function syncTags($tags)
+    {
+        $this->tags()->sync($tags);
+    }
+    public function attachTags($tags)
+    {
+        $this->tags()->attach($tags);
+    }
+
+    public function getComments()
+    {
+        return $this->comments()->with('user')->withCount(['likes as likes_count' => function ($query) {
+            $query->where('vote', 1);
+        }])->orderByDesc('likes_count')->get();
+    }
+
+    public function getRelated()
+    {
+        return $this->category->articles()->take(3)->get();
     }
 }

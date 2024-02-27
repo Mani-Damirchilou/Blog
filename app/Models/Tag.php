@@ -9,11 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory,HasPersianDateTime;
+
     protected $fillable = [
         'name',
         'slug'
     ];
 
+    // Relations
     public function articles()
     {
         return $this->belongsToMany(Article::class);

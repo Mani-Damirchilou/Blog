@@ -11,7 +11,15 @@ use Illuminate\Support\Str;
 class Comment extends Model
 {
     use HasFactory,Likeable,HasPersianDateTime;
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 
+    protected $fillable = [
+        'text','user_id'
+    ];
+    // Relations
     public function article()
     {
         return $this->belongsTo(Article::class);
@@ -22,6 +30,7 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Accessors
     public function getShortTextAttribute()
     {
         return Str::substr($this->text,'0','30').'...';

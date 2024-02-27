@@ -9,16 +9,18 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2 align-items-center">
                     <h1>{{$article->title}}</h1>
-                    <a href="{{route('categories.articles',$article->category->slug)}}" class="btn btn-sm">{{$article->category->name}}</a>
+                    @if(!is_null($article->category))
+                        <a href="{{route('categories.articles',$article->category->slug)}}" class="btn btn-sm">{{$article->category->name}}</a>
+                    @endif
                 </div>
                 <div class="d-flex gap-3 align-items-center">
-                    <a href="" class="btn btn-outline-danger">
-                        <i class="bi bi-hand-thumbs-down"></i>
-                        {{$article->likes()->where('vote',-1)->count()}}
+                    <a href="{{route('dislikes.store',['article',$article->slug])}}" class="btn btn{{!$isDisLiked ? '-outline' : ''}}-danger @guest disabled @endguest">
+                        <i class="bi bi-hand-thumbs-down{{$isDisLiked ? '-fill' : ''}}"></i>
+                        {{$article->getDisLikesCount()}}
                     </a>
-                    <a href="" class="btn btn-success">
-                        <i class="bi bi-hand-thumbs-up-fill"></i>
-                        {{$article->likes()->where('vote',1)->count()}}
+                    <a href="{{route('likes.store',['article',$article->slug])}}" class="btn btn{{!$isLiked ? '-outline' : ''}}-success @guest disabled @endguest">
+                        <i class="bi bi-hand-thumbs-up{{$isLiked ? '-fill' : ''}}"></i>
+                        {{$article->getLikesCount()}}
                     </a>
                     <span class="btn btn-primary disabled">
                         <i class="bi bi-eye"></i>
@@ -55,23 +57,8 @@
             </span>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header fs-4">
-            مقالات مرتبط
-        </div>
-        <div class="card-body row g-4">
-            @foreach($article->category->articles()->take(4)->get() as $article)
-                <x-main.article-box :article="$article"/>
-            @endforeach
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header fs-4">
-            نظرات
-            ({{$article->comments()->count()}})
-        </div>
-        <div class="card-body">
-
-        </div>
-    </div>
+    @if(!is_null($article->category))
+        <x-main.articles.related-articles :article="$article"/>
+    @endif
+    <x-main.articles.comments-section :article="$article"/>
 @endsection

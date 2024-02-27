@@ -1,4 +1,3 @@
-<div class="col-3 d-flex justify-content-center">
     <div class="card" style="width: 18rem;">
         <img src="{{$article->thumbnail}}" class="card-img-top" style="height: 10rem" alt="{{$article->title}}">
         <div class="card-body">
@@ -8,4 +7,3 @@
             <a href="{{route('articles.show',$article->slug)}}" class="btn btn-primary">ادامه مطلب</a>
         </div>
     </div>
-</div>

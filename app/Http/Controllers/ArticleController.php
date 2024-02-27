@@ -33,7 +33,7 @@ class ArticleController extends Controller
             'active' => $request->has('active')
         ]);
 
-        $article->tags()->sync($request->tags);
+        $article->syncTags($request->tags);
 
         return redirect()->route('articles.index');
     }
@@ -49,7 +49,7 @@ class ArticleController extends Controller
             'active' => $request->has('active')
         ]);
 
-       $article->tags()->attach($request->tags);
+       $article->attachTags($request->tags);
 
         return redirect()->route('articles.index');
     }
@@ -63,6 +63,9 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
-        return view('articles.show',compact('article'));
+        $isDisLiked = $article->isDisLikedByUser();
+        $isLiked = $article->isLikedByUser();
+        abort_if(!$article->active,403,'دسترسی غیر مجاز میباشد');
+        return view('articles.show',compact('article','isDisLiked','isLiked'));
     }
 }

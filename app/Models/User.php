@@ -47,14 +47,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    // Relations
     public function articles()
     {
         return $this->hasMany(Article::class);
-    }
-
-    public function getProfileAttribute()
-    {
-        return '/storage/'.Str::substr($this->profile_path,strlen('public/'));
     }
 
     public function likes()
@@ -65,5 +61,10 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    // Accessors
+    public function getProfileAttribute()
+    {
+        return '/storage/'.Str::substr($this->profile_path,strlen('public/'));
     }
 }

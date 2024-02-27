@@ -3,7 +3,9 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryArticleController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DarkModeController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,12 +23,24 @@ Route::view('','index',['articles' => \App\Models\Article::active()->latest()->p
 
 Route::get('categories/{category:slug}/articles',[CategoryArticleController::class,'index'])->name('categories.articles');
 
-Route::get('articles/{article:slug}',[ArticleController::class,'show'])->name('articles.show')->can('view','article');
+Route::get('articles/{article}',[ArticleController::class,'show'])->name('articles.show');
 
 Route::middleware('auth')->group(function (){
 
     Route::get('/dark-mode/update',[DarkModeController::class,'update'])->name('dark-mode.update');
 
+    Route::get('{likeable_type}/{likeable_id}/like',[LikeController::class,'like'])->name('likes.store');
+    Route::get('{likeable_type}/{likeable_id}/dislike',[LikeController::class,'dislike'])->name('dislikes.store');
+
+    Route::prefix('articles')->group(function (){
+
+        Route::prefix('{article}')->group(function (){
+
+            Route::post('comments',[CommentController::class,'store'])->name('articles.comments.store');
+
+        });
+
+    });
 
     require __DIR__.'/panel.php';
 

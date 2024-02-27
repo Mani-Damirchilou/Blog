@@ -10,13 +10,20 @@ class Category extends Model
 {
     use HasPersianDateTime;
     use HasFactory;
+
     protected $fillable = [
         'name',
         'slug'
     ];
 
+    // Relations
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+    // Eloquent Calls
+    public function getRelatedArticles()
+    {
+        return $this->articles()->latest()->active()->paginate(12);
     }
 }

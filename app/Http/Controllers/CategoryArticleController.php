@@ -9,7 +9,7 @@ class CategoryArticleController extends Controller
 {
     public function index(Category $category)
     {
-        $articles = $category->articles()->latest()->active()->paginate(12);
+        $articles = $category->getRelatedArticles();
 
         return view('categories.articles',compact('articles'));
     }

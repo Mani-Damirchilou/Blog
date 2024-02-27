@@ -15,7 +15,9 @@
             <div class="card-body row g-4">
                 @if(!$articles->isEmpty())
                 @foreach($articles as $article)
-                    <x-main.article-box :article="$article"/>
+                        <div class="col-3 d-flex justify-content-center">
+                            <x-main.article-box :article="$article"/>
+                        </div>
                 @endforeach
                 @else
                     <div class="col-12 text-center fs-4">
