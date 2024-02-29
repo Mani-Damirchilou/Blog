@@ -8,13 +8,10 @@
         </a>
     @endcan
 @endsection
-@section('content')
-    <form class="card" method="POST" action="{{route('articles.store')}}" enctype="multipart/form-data">
+@section('card-header','مقاله جدید')
+@section('card-body')
+    <form class="d-flex flex-column gap-4" method="POST" action="{{route('articles.store')}}" enctype="multipart/form-data" id="create">
         @csrf
-        <div class="card-header fs-4">
-            مقاله جدید
-        </div>
-        <div class="card-body row g-2">
             <div>
                 <input type="text" name="title" placeholder="عنوان ..." value="{{old('title')}}" class="form-control @error('title') is-invalid @enderror">
                 @error('title')
@@ -53,25 +50,33 @@
                 @enderror
             </div>
             <div class="d-flex justify-content-center align-items-center gap-3 form-switch">
-                 <span>قابل مشاهده</span>
+                 <span class="badge text-bg-success">قابل مشاهده</span>
                 <input type="checkbox" name="active" class="form-check-input m-0">
-                <span>غیر قابل مشاهده</span>
+                <span class="badge text-bg-danger">غیر قابل مشاهده</span>
             </div>
-            <hr>
-            برچسب ها :
-            @if($tags->isEmpty())
-                هیچ برچسبی وجود ندارد
-            @else
-                @foreach($tags as $tag)
-                    <div class="d-flex gap-2">
-                        <input type="checkbox" name="tags[]" value="{{$tag->id}}" id="{{$tag->name}}" class="form-check-input">
-                        <label for="{{$tag->name}}">{{$tag->name}}</label>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        برچسب ها
                     </div>
-                @endforeach
-            @endif
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-success">ثبت</button>
-        </div>
+                    @if($tags->isEmpty())
+                        هیچ برچسبی وجود ندارد
+                    @else
+                    <ul class="list-group list-group-flush p-0">
+                        @foreach($tags as $tag)
+                            <li class="list-group-item ">
+                                <input type="checkbox" name="tags[]" value="{{$tag->id}}" id="{{$tag->name}}" class="form-check-input">
+                                <label for="{{$tag->name}}">{{$tag->name}}</label>
+                            </li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
+
+
     </form>
+@endsection
+@section('card-footer')
+    <button form="create" class="btn btn-success">ثبت</button>
 @endsection

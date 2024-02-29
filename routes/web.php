@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('','index',['articles' => \App\Models\Article::active()->latest()->paginate(12)])->name('index');
+Route::view('','index',['articles' => \App\Models\Article::with('user','category','views','likes')->active()->latest()->paginate(12)])->name('index');
 
 Route::get('categories/{category:slug}/articles',[CategoryArticleController::class,'index'])->name('categories.articles');
 

@@ -1,4 +1,4 @@
-<a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('articles.index','articles.edit','articles.create')) me-2 link-primary @endif" href="{{route('articles.index')}}">
+<a class="btn btn-lg @if(\Illuminate\Support\Facades\Route::is('articles.index','articles.edit','articles.create')) btn-primary @endif" href="{{route('articles.index')}}">
     <i class="bi bi-file-earmark-richtext"></i>
     مقالات
     <span class="badge text-bg-danger">

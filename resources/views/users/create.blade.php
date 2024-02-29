@@ -8,13 +8,12 @@
         </a>
     @endcan
 @endsection
-@section('content')
-    <form class="card" method="POST" action="{{route('users.store')}}">
+@section('card-header','کاربر جدید')
+@section('card-body')
+    <form class="row g-2" method="POST" action="{{route('users.store')}}" id="create">
         @csrf
-        <div class="card-header fs-4">
-            کاربر جدید
-        </div>
-        <div class="card-body row g-2">
+
+
             <div class="col-sm-6">
                 <input type="text" name="name" placeholder="نام ..." value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
                 @error('name')
@@ -52,9 +51,13 @@
                 </div>
                 @enderror
             </div>
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-success">ثبت</button>
-        </div>
+
+
     </form>
 @endsection
+@section('card-footer')
+    <button form="create" class="btn btn-success">ثبت</button>
+@endsection
+
+
+

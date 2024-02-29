@@ -59,55 +59,6 @@ class Article extends Model
         return $query->where('title','like',"%{$title}%");
     }
 
-    public function scopeFilter($query,$orderBy,$direction)
-    {
-        $validColumns = [
-            'title',
-            'slug',
-            'user_id',
-            'category_id',
-            'likes_count',
-            'dislikes_count',
-            'views_count',
-            'active',
-            'created_at',
-            'updated_at',
-            'id'
-        ];
-        $validDirections = [
-            'desc',
-            'asc'
-        ];
-        if ($orderBy && $direction)
-        {
-            if (in_array($orderBy,$validColumns) && in_array($direction,$validDirections))
-            {
-                switch ($orderBy){
-                    case 'dislikes_count': {
-                        return $query->withCount(['likes as dislikes_count' => function ($query) {
-                            $query->where('vote',-1);
-                        }])->orderBy('dislikes_count',$direction);
-                        break;
-                    }
-                    case 'likes_count' : {
-                        return $query->withCount(['likes as likes_count' => function ($query) {
-                            $query->where('vote',1);
-                        }])->orderBy('likes_count',$direction);
-                        break;
-                    }
-                    case 'views_count' : {
-                        return $query->withCount('views')->orderBy('views_count');
-                        break;
-                    }
-                    default : {
-                        return $query->orderBy($orderBy,$direction);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
     // Accessors
     public function getThumbnailAttribute()
     {

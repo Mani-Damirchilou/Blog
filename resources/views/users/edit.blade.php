@@ -8,13 +8,12 @@
         </a>
     @endcan
 @endsection
-@section('content')
-    <form class="card" method="POST" action="{{route('users.update',$user->id)}}">
+@section('card-header','ویرایش کاربر')
+@section('card-body')
+    <form class="row g-2" method="POST" action="{{route('users.update',$user->id)}}" id="update">
         @csrf
-        <div class="card-header fs-4">
-            ویرایش کاربر
-        </div>
-        <div class="card-body row g-2">
+
+
             <div class="col-sm-6">
                 <input type="text" name="name" placeholder="نام ..." value="{{old('name',$user->name)}}" class="form-control @error('name') is-invalid @enderror">
                 @error('name')
@@ -48,9 +47,13 @@
                 <input {{$user->is_banned ? 'checked' : ''}} type="checkbox" name="ban" id="ban" class="form-check-input">
                 <label for="ban">مسدود شده</label>
             </div>
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-primary">ویرایش</button>
-        </div>
+
+
     </form>
 @endsection
+@section('card-footer')
+    <button form="update" class="btn btn-primary">ثبت</button>
+@endsection
+
+
+

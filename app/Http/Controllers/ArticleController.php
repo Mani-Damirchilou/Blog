@@ -15,25 +15,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::with('views','category','user','tags','likes')->filter(request()->query('order_by'),request()->query('direction'))->paginate(15);
-        $orders = [
-            'id' => '#',
-            'title' => 'عنوان',
-            'slug' => 'سریال',
-            'user_id' => 'نویسنده',
-            'category_id' => 'دسته بندی',
-            'likes_count' => 'پسندیده شده',
-            'dislikes_count' => 'پسندیده نشده',
-            'views_count' => 'بازدید ها',
-            'active' => 'وضعیت',
-            'created_at' => 'تاریخ انتشار',
-            'updated_at' => 'تاریخ آخرین بروزرسانی'
-        ];
-        $directions = [
-            'desc' => 'نزولی',
-            'asc' => 'صعودی'
-        ];
-        return view('articles.index',compact('articles','directions','orders'));
+        $articles = Article::with('views','category','user','tags','likes')->paginate(15);
+
+        return view('articles.index',compact('articles'));
     }
     public function edit(Article $article)
     {

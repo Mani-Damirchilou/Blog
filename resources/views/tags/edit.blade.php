@@ -8,32 +8,33 @@
     </a>
     @endcan
 @endsection
-@section('content')
-    <form class="card" method="POST" action="{{route('tags.update',$tag->id)}}">
+@section('card-header','ویرایش برچسب')
+@section('card-body')
+    <form class="row g-2" method="POST" action="{{route('tags.update',$tag->id)}}" id="update">
         @csrf
-        <div class="card-header fs-4">
-            ویرایش برچسب
-        </div>
-        <div class="card-body row g-2">
-            <div class="col-sm-6">
-                <input type="text" name="name" placeholder="نام ..." value="{{old('name',$tag->name)}}" class="form-control @error('name') is-invalid @enderror">
-                @error('name')
-                <div class="invalid-feedback ">
-                    {{$message}}
-                </div>
-                @enderror
+
+
+        <div class="col-sm-6">
+            <input type="text" name="name" placeholder="نام ..." value="{{old('name',$tag->name)}}" class="form-control @error('name') is-invalid @enderror">
+            @error('name')
+            <div class="invalid-feedback ">
+                {{$message}}
             </div>
-            <div class="col-sm-6">
-                <input type="text" name="slug" placeholder="سریال ..." value="{{old('slug',$tag->slug)}}" class="form-control @error('slug') is-invalid @enderror">
-                @error('slug')
-                <div class="invalid-feedback ">
-                    {{$message}}
-                </div>
-                @enderror
+            @enderror
+        </div>
+        <div class="col-sm-6">
+            <input type="text" name="slug"  placeholder="سریال ..." value="{{old('slug',$tag->slug)}}" class="form-control @error('slug') is-invalid @enderror">
+            @error('slug')
+            <div class="invalid-feedback ">
+                {{$message}}
             </div>
+            @enderror
         </div>
-        <div class="card-footer">
-            <button class="btn btn-primary">ویرایش</button>
-        </div>
+
     </form>
 @endsection
+@section('card-footer')
+    <button form="update" class="btn btn-primary">ویرایش</button>
+@endsection
+
+

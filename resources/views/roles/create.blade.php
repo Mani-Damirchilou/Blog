@@ -8,13 +8,11 @@
         </a>
     @endcan
 @endsection
-@section('content')
-    <form class="card" method="POST" action="{{route('roles.store')}}">
+@section('card-header','نقش جدید')
+@section('card-body')
+    <form class="d-flex flex-column gap-2" method="POST" action="{{route('roles.store')}}" id="create">
         @csrf
-        <div class="card-header fs-4">
-            نقش جدید
-        </div>
-        <div class="card-body row g-2">
+
             <div>
                 <input type="text" name="name" placeholder="نام ..." value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
                 @error('name')
@@ -23,17 +21,26 @@
                 </div>
                 @enderror
             </div>
-            <hr>
-            دسترسی ها :
-            @foreach($permissions as $permission)
-                <div class="d-flex gap-2">
-                    <input type="checkbox" name="permissions[]" value="{{$permission->name}}" id="{{$permission->name}}" class="form-check-input">
-                    <label for="{{$permission->name}}">{{$permission->name}}</label>
+
+            <div class="card">
+                <div class="card-header">
+                    دسترسی ها
                 </div>
-            @endforeach
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-success">ثبت</button>
-        </div>
+                <ul class="list-group list-group-flush p-0">
+                    @foreach($permissions as $permission)
+                        <li class="list-group-item">
+                            <input type="checkbox" name="permissions[]" value="{{$permission->name}}" id="{{$permission->name}}" class="form-check-input">
+                            <label for="{{$permission->name}}">{{$permission->name}}</label>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+
     </form>
+
 @endsection
+@section('card-footer')
+    <button form="create" class="btn btn-success">ثبت</button>
+@endsection
+

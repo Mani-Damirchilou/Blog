@@ -11,7 +11,7 @@
         @yield('title')
     </title>
 </head>
-<body class="">
+<body>
 @yield('body')
 </body>
 </html>

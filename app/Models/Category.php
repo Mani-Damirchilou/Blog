@@ -24,6 +24,6 @@ class Category extends Model
     // Eloquent Calls
     public function getRelatedArticles()
     {
-        return $this->articles()->latest()->active()->paginate(12);
+        return $this->articles()->with('user','category','views','likes')->latest()->active()->paginate(12);
     }
 }

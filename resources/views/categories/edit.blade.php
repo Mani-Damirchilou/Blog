@@ -8,32 +8,33 @@
         </a>
     @endcan
 @endsection
-@section('content')
-    <form class="card" method="POST" action="{{route('categories.update',$category->id)}}">
+@section('card-header','ویرایش دسته بندی')
+@section('card-body')
+    <form class="row g-2" method="POST" action="{{route('categories.update',$category->id)}}" id="update">
         @csrf
-        <div class="card-header fs-4">
-            ویرایش دسته بندی
-        </div>
-        <div class="card-body row g-2">
-            <div class="col-sm-6">
-                <input type="text" name="name" placeholder="نام ..." value="{{old('name',$category->name)}}" class="form-control @error('name') is-invalid @enderror">
-                @error('name')
-                <div class="invalid-feedback ">
-                    {{$message}}
-                </div>
-                @enderror
+
+        <div class="col-sm-6">
+            <input type="text" name="name" placeholder="نام ..." value="{{old('name',$category->name)}}" class="form-control @error('name') is-invalid @enderror">
+            @error('name')
+            <div class="invalid-feedback ">
+                {{$message}}
             </div>
-            <div class="col-sm-6">
-                <input type="text" name="slug" placeholder="سریال ..." value="{{old('slug',$category->slug)}}" class="form-control @error('slug') is-invalid @enderror">
-                @error('slug')
-                <div class="invalid-feedback ">
-                    {{$message}}
-                </div>
-                @enderror
+            @enderror
+        </div>
+        <div class="col-sm-6">
+            <input type="text" name="slug"  placeholder="سریال ..." value="{{old('slug',$category->slug)}}" class="form-control @error('slug') is-invalid @enderror">
+            @error('slug')
+            <div class="invalid-feedback ">
+                {{$message}}
             </div>
+            @enderror
         </div>
-        <div class="card-footer">
-            <button class="btn btn-primary">ویرایش</button>
-        </div>
+
     </form>
+
+
 @endsection
+@section('card-footer')
+    <button form="update" class="btn btn-primary">ویرایش</button>
+@endsection
+

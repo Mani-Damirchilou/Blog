@@ -8,32 +8,39 @@
         </a>
     @endcan
 @endsection
-@section('content')
-    <form class="card" method="POST" action="{{route('roles.update',$role->id)}}">
+@section('card-header','ویرایش نقش')
+@section('card-body')
+    <form class="d-flex flex-column gap-2" method="POST" action="{{route('roles.update',$role->id)}}" id="update">
         @csrf
-        <div class="card-header fs-4">
-            ویرایش نقش
-        </div>
-        <div class="card-body row g-2">
-            <div>
-                <input type="text" name="name" placeholder="نام ..." value="{{old('name',$role->name)}}" class="form-control @error('name') is-invalid @enderror">
-                @error('name')
-                <div class="invalid-feedback ">
-                    {{$message}}
-                </div>
-                @enderror
+
+        <div>
+            <input type="text" name="name" placeholder="نام ..." value="{{old('name',$role->name)}}" class="form-control @error('name') is-invalid @enderror">
+            @error('name')
+            <div class="invalid-feedback ">
+                {{$message}}
             </div>
-            <hr>
-            دسترسی ها :
-            @foreach($permissions as $permission)
-                <div class="d-flex gap-2">
-                    <input {{$role->hasPermissionTo($permission) ? 'checked' : ''}} type="checkbox" name="permissions[]" value="{{$permission->name}}" id="{{$permission->name}}" class="form-check-input">
-                    <label for="{{$permission->name}}">{{$permission->name}}</label>
-                </div>
-            @endforeach
+            @enderror
         </div>
-        <div class="card-footer">
-            <button class="btn btn-primary">ویرایش</button>
+
+        <div class="card">
+            <div class="card-header">
+                دسترسی ها
+            </div>
+            <ul class="list-group list-group-flush p-0">
+                @foreach($permissions as $permission)
+                    <li class="list-group-item">
+                        <input {{$role->hasPermissionTo($permission) ? 'checked' : ''}} type="checkbox" name="permissions[]" value="{{$permission->name}}" id="{{$permission->name}}" class="form-check-input">
+                        <label for="{{$permission->name}}">{{$permission->name}}</label>
+                    </li>
+                @endforeach
+            </ul>
         </div>
+
+
     </form>
+
 @endsection
+@section('card-footer')
+    <button form="update" class="btn btn-primary">ویرایش</button>
+@endsection
+

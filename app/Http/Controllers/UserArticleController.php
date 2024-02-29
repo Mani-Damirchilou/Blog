@@ -9,7 +9,7 @@ class UserArticleController extends Controller
 {
     public function index(User $user)
     {
-        $articles = $user->articles()->paginate(12);
+        $articles = $user->articles()->with('views','category','user','tags','likes')->paginate(12);
         return view('users.articles',compact('articles'));
     }
 }
