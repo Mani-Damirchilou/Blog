@@ -42,10 +42,10 @@
                             <td>{{$comment->article->title}}</td>
                             <td>{{$comment->text}}</td>
                             <td>
-                                {{$comment->likes->where('vote',1)->count()}}
+                                {{$comment->getLikesCount()}}
                             </td>
                             <td>
-                                {{$comment->likes->where('vote',-1)->count()}}
+                                {{$comment->getDisLikesCount()}}
                             </td>
                             <td>{{$comment->created_at_to_persian}}</td>
                             <td class="d-flex gap-2 justify-content-center">

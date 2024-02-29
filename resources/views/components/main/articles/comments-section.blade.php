@@ -3,7 +3,9 @@
         نظرات
         ({{$comments->count()}})
     </div>
-    <div class="card-body d-flex flex-column gap-4">
+    <div class="card-body d-flex flex-column gap-4 text-center">
+        @if(!$comments->isEmpty())
+
         @foreach($comments as $comment)
             <div class="card">
                 <div class="card-header d-flex justify-content-center align-items-center gap-2">
@@ -14,11 +16,11 @@
                     <span>{{$comment->text}}</span>
                     <div class="d-flex gap-2">
                         <a href="{{route('likes.store',['comment',$comment->id])}}" class="btn text-success @guest disabled @endguest">
-                            <i class="bi bi-hand-thumbs-up{{$comment->is_liked_by_user ? '-fill' : ''}}"></i>
+                            <i class="bi bi-hand-thumbs-up{{$comment->isLikedByUser() ? '-fill' : ''}}"></i>
                             {{$comment->getLikesCount()}}
                         </a>
                         <a href="{{route('dislikes.store',['comment',$comment->id])}}" class="btn text-danger @guest disabled @endguest">
-                            <i class="bi bi-hand-thumbs-down{{$comment->is_dis_liked_by_user ? '-fill' : ''}}"></i>
+                            <i class="bi bi-hand-thumbs-down{{$comment->isDisLikedByUser() ? '-fill' : ''}}"></i>
                             {{$comment->getDisLikesCount()}}
                         </a>
                     </div>
@@ -31,6 +33,11 @@
                 </div>
             </div>
         @endforeach
+        @else
+            <span class="fs-5">
+            هنوز هیچ نظری ثبت نشده است !
+            </span>
+        @endif
     </div>
     <div class="card-footer">
         @guest

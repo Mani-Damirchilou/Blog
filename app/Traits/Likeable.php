@@ -78,12 +78,4 @@ trait Likeable
         return $this->likes()->where('vote',$vote)->count();
     }
 
-    public function getIsLikedByUserAttribute()
-    {
-        return $this->isLikedByUser();
-    }
-    public function getIsDisLikedByUserAttribute()
-    {
-        return $this->isDisLikedByUser();
-    }
 }

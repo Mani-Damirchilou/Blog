@@ -27,7 +27,7 @@
                     </a>
                     <span class="btn btn-primary disabled">
                         <i class="bi bi-eye"></i>
-                        -
+                        {{$article->getViewsCount()}}
                     </span>
                 </div>
             </div>

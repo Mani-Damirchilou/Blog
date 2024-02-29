@@ -11,7 +11,7 @@
     <div class="card-body row gap-md-0 gap-4">
         <x-panel.dashboard.new-users/>
         <x-panel.dashboard.todays-comments/>
-        <x-panel.dashboard.todays-comments/>
+        <x-panel.dashboard.total-views/>
 
     </div>
 </div>

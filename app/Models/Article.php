@@ -44,6 +44,10 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function views()
+    {
+        return $this->hasMany(View::class);
+    }
     // Scopes
     public function scopeActive($query)
     {
@@ -79,5 +83,24 @@ class Article extends Model
     public function getRelated()
     {
         return $this->category->articles()->where('id','!=',$this->id)->take(3)->get();
+    }
+
+    public function isViewedByUser()
+    {
+        return $this->views()->where('user_id',auth()->id())->exists();
+    }
+    public function view()
+    {
+        if (auth()->check() && !$this->isViewedByUser())
+        {
+            $this->views()->create([
+                'user_id' => auth()->id()
+            ]);
+        }
+    }
+
+    public function getViewsCount()
+    {
+        return $this->views()->count();
     }
 }

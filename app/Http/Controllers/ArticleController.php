@@ -63,6 +63,7 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
+        $article->view();
         $isDisLiked = $article->isDisLikedByUser();
         $isLiked = $article->isLikedByUser();
         abort_if(!$article->active,403,'دسترسی غیر مجاز میباشد');

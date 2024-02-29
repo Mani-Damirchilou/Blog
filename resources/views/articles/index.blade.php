@@ -37,6 +37,9 @@
                         <th scope="col">
                             <i class="bi bi-hand-thumbs-down"></i>
                         </th>
+                        <th scope="col">
+                            <i class="bi bi-eye"></i>
+                        </th>
                         <th scope="col">وضعیت</th>
                         <th scope="col">عکس بند انگشتی</th>
                         <th scope="col">تاریخ انتشار</th>
@@ -61,10 +64,13 @@
                                 @endif
                             </td>
                             <td>
-                                {{$article->likes->where('vote',1)->count()}}
+                                {{$article->getLikesCount()}}
                             </td>
                             <td>
-                                {{$article->likes->where('vote',-1)->count()}}
+                                {{$article->getDisLikesCount()}}
+                            </td>
+                            <td>
+                                {{$article->getViewsCount()}}
                             </td>
                             <td class="text-{{$article->active ? 'success' : 'danger'}}">{{$article->active ? 'قابل مشاهده' : 'غیرقابل مشاهده'}}</td>
                             <td><a class="text-decoration-none" href="{{$article->thumbnail}}">
