@@ -2,6 +2,25 @@
 @section('subtitle','مقالات > لیست همه')
 @section('header')
     <span class="fs-6">مقالات > لیست همه</span>
+
+
+    <form class="d-flex gap-2">
+        <select name="order_by" id="" class="form-select">
+            <option disabled selected>اولویت بر اساس</option>
+            @foreach($orders as $key => $value)
+                <option {{request()->query('order_by') === $key ? 'selected' : ''}} value="{{$key}}">{{$value}}</option>
+            @endforeach
+        </select>
+        <select name="direction" id="" class="form-select">
+            @foreach($directions as $key => $value)
+                <option {{request()->query('direction') === $key ? 'selected' : ''}} value="{{$key}}">{{$value}}</option>
+            @endforeach
+        </select>
+
+        <button class="btn btn btn-success"><i class="bi bi-check"></i></button>
+    </form>
+
+
     @can('ساخت مقاله')
         <a href="{{route('articles.create')}}" data-bs-toggle="tooltip" data-bs-title="مقاله جدید" class="btn btn-sm rounded-3 btn btn-primary"><i class="bi bi-plus "></i></a>
     @endcan
