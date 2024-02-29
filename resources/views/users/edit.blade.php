@@ -44,6 +44,10 @@
                 </div>
                 @enderror
             </div>
+            <div class="col-12 d-flex gap-2">
+                <input {{$user->is_banned ? 'checked' : ''}} type="checkbox" name="ban" id="ban" class="form-check-input">
+                <label for="ban">مسدود شده</label>
+            </div>
         </div>
         <div class="card-footer">
             <button class="btn btn-primary">ویرایش</button>

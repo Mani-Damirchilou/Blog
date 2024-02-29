@@ -25,7 +25,11 @@ class UserController extends Controller
 
     public function update(User $user,UpdateUserRequest $request)
     {
-        $user->update($request->only('name','email'));
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'is_banned' => $request->has('ban')
+        ]);
         $user->syncRoles($request->role);
         return redirect()->route('users.index');
     }

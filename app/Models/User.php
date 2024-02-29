@@ -25,7 +25,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'dark_mode'
+        'dark_mode',
+        'is_banned'
     ];
 
     /**
