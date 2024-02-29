@@ -15,7 +15,7 @@ class Banned
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->is_banned)
+        if ($request->user() && $request->user()->is_banned)
             abort(403,'حساب کاربری شما مسدود شده است');
         return $next($request);
     }

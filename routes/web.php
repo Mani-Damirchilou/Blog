@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::view('','index',['articles' => \App\Models\Article::active()->latest()->p
 Route::get('categories/{category:slug}/articles',[CategoryArticleController::class,'index'])->name('categories.articles');
 
 Route::get('articles/{article}',[ArticleController::class,'show'])->name('articles.show');
+
+Route::get('search',[SearchController::class,'index'])->name('articles.search');
 
 Route::middleware('auth')->group(function (){
 

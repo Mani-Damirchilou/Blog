@@ -5,6 +5,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <a class="navbar-brand" href="{{route('index')}}">وبلاگ</a>
+            <form action="{{route('articles.search')}}" method="GET" class="d-flex gap-2 me-auto">
+                <input type="text" name="q" id="" class="form-control" placeholder="جست و جوی مقالات ...">
+                <button class="btn btn-primary">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
             @auth
             <div class="dropdown me-auto">
                 <button class="btn dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown">

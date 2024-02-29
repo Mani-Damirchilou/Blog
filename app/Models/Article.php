@@ -54,6 +54,11 @@ class Article extends Model
         return $query->where('active',true);
     }
 
+    public function scopeSearch($query,$title)
+    {
+        return $query->where('title','like',"%{$title}%");
+    }
+
     // Accessors
     public function getThumbnailAttribute()
     {
