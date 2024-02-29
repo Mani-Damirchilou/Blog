@@ -5,6 +5,7 @@ namespace App\View\Components\Main\Articles;
 use App\Models\Article;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
 class RelatedArticles extends Component
@@ -15,7 +16,7 @@ class RelatedArticles extends Component
      */
     public function __construct(Article $article)
     {
-        $this->articles = $article->gerRelated();
+        $this->articles = !is_null($article->category) ? $article->getRelated() : new Collection();
     }
 
     /**

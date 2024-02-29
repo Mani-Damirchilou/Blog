@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('subtitle',$article->title)
 @section('content')
+
     <div class="card">
         <div class="card-header">
             <img src="{{$article->thumbnail}}" alt="{{$article->title}}" class="card-img-top">
@@ -10,7 +11,9 @@
                 <div class="d-flex gap-2 align-items-center">
                     <h1>{{$article->title}}</h1>
                     @if(!is_null($article->category))
-                        <a href="{{route('categories.articles',$article->category->slug)}}" class="btn btn-sm">{{$article->category->name}}</a>
+                        <div class="badge text-bg-danger">
+                            <a href="{{route('categories.articles',$article->category->slug)}}" class="text-decoration-none link-light">{{$article->category->name}}</a>
+                        </div>
                     @endif
                 </div>
                 <div class="d-flex gap-3 align-items-center">
@@ -36,9 +39,9 @@
                 @if(!$article->tags->isEmpty())
                     <div class="d-flex gap-1">
                         @foreach($article->tags as $tag)
-                            <button class="btn btn-primary">
+                            <div class="badge text-bg-primary">
                                 {{$tag->name}}
-                            </button>
+                            </div>
                         @endforeach
                     </div>
                 @else
@@ -57,8 +60,7 @@
             </span>
         </div>
     </div>
-    @if(!is_null($article->category))
-        <x-main.articles.related-articles :article="$article"/>
-    @endif
+
+    <x-main.articles.related-articles :article="$article"/>
     <x-main.articles.comments-section :article="$article"/>
 @endsection

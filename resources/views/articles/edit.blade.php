@@ -25,7 +25,7 @@
             </div>
             <div>
                 <select name="category_id" class="form-select @error('category_id') is-invalid @enderror">
-                    <option value="">بدون دسته بندی</option>
+                    <option value="" {{$article->category ?? 'selected'}}>بدون دسته بندی</option>
                     @foreach($categories as $category)
                         <option {{$category->id === $article->category_id ? 'selected' : ''}} value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach

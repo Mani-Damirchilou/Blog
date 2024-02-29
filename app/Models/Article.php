@@ -78,6 +78,6 @@ class Article extends Model
 
     public function getRelated()
     {
-        return $this->category->articles()->take(3)->get();
+        return $this->category->articles()->where('id','!=',$this->id)->take(3)->get();
     }
 }
