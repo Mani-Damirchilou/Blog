@@ -55,9 +55,10 @@
             {{$article->created_at_to_persian}}
             </span>
             توسط
-            <span class="fw-bold">
+            @php($classes = ['success','danger','info','primary','warning','secondary'])
+            <a href="{{route('users.articles',$article->user->name)}}" class="badge text-decoration-none text-bg-{{$classes[array_rand($classes)]}}">
             {{$article->user->name}}
-            </span>
+            </a>
         </div>
     </div>
 
