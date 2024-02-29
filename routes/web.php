@@ -24,20 +24,22 @@ Route::view('','index',['articles' => \App\Models\Article::active()->latest()->p
 
 Route::get('categories/{category:slug}/articles',[CategoryArticleController::class,'index'])->name('categories.articles');
 
-Route::get('articles/{article}',[ArticleController::class,'show'])->name('articles.show');
-
 Route::get('search',[SearchController::class,'index'])->name('articles.search');
 
 Route::middleware('auth')->group(function (){
 
     Route::get('/dark-mode/update',[DarkModeController::class,'update'])->name('dark-mode.update');
 
-    Route::get('{likeable_type}/{likeable_id}/like',[LikeController::class,'like'])->name('likes.store');
-    Route::get('{likeable_type}/{likeable_id}/dislike',[LikeController::class,'dislike'])->name('dislikes.store');
+    Route::prefix('{likeable_type}/{likeable_id}')->controller(LikeController::class)->group(function (){
+        Route::get('like','like')->name('likes.store');
+        Route::get('dislike','dislike')->name('dislikes.store');
+    });
 
-    Route::prefix('articles')->group(function (){
+    Route::prefix('articles')->controller(ArticleController::class)->group(function (){
 
         Route::prefix('{article}')->group(function (){
+
+            Route::get('','show')->name('articles.show');
 
             Route::post('comments',[CommentController::class,'store'])->name('articles.comments.store');
 
