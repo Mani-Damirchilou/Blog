@@ -15,11 +15,11 @@
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <span>{{$comment->text}}</span>
                     <div class="d-flex gap-2">
-                        <a href="{{route('likes.store',['comment',$comment->id])}}" class="btn text-success @guest disabled @endguest">
+                        <a data-bs-toggle="tooltip" data-bs-title="پسندیدن" href="{{route('likes.store',['comment',$comment->id])}}" class="btn text-success @guest disabled @endguest">
                             <i class="bi bi-hand-thumbs-up{{$comment->isLikedByUser() ? '-fill' : ''}}"></i>
                             {{$comment->getLikesCount()}}
                         </a>
-                        <a href="{{route('dislikes.store',['comment',$comment->id])}}" class="btn text-danger @guest disabled @endguest">
+                        <a data-bs-toggle="tooltip" data-bs-title="نپسندیدن" href="{{route('dislikes.store',['comment',$comment->id])}}" class="btn text-danger @guest disabled @endguest">
                             <i class="bi bi-hand-thumbs-down{{$comment->isDisLikedByUser() ? '-fill' : ''}}"></i>
                             {{$comment->getDisLikesCount()}}
                         </a>
