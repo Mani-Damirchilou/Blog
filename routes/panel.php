@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('panel')->group(function (){
@@ -122,7 +123,7 @@ Route::prefix('panel')->group(function (){
 
     Route::prefix('articles')->controller(ArticleController::class)->group(function (){
 
-        Route::get('','index')->name('articles.index')->middleware('permission:مشاهده لیست مقالات');
+        Route::view('','articles.index',['articles' => Article::with('category','user','tags')->paginate(15)])->name('articles.index')->middleware('permission:مشاهده لیست مقالات');
 
         Route::middleware('permission:ساخت مقاله')->group(function (){
 

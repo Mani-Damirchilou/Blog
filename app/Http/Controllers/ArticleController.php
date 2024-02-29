@@ -13,12 +13,6 @@ use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
-    public function index()
-    {
-        $articles = Article::with('views','category','user','tags','likes')->paginate(15);
-
-        return view('articles.index',compact('articles'));
-    }
     public function edit(Article $article)
     {
         $categories = Category::all();

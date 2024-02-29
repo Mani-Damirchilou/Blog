@@ -18,10 +18,7 @@ class Article extends Model
     protected $fillable = [
         'title','category_id','slug','content','active','thumbnail_path'
     ];
-    protected $appends = [
-        'is_dis_liked_by_user',
-        'is_liked_by_user',
-    ];
+
 
     // Relations
     public function user()
