@@ -14,7 +14,7 @@
             <div class="dropdown me-auto">
                 <button class="btn dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown">
                     <img src="{{auth()->user()->profile}}" class="rounded-circle border border-2 " style="width: 25px;height: 25px" alt="">
-                    {{auth()->user()->email}}
+                    {{auth()->user()->name}}
                 </button>
                 <ul class="dropdown-menu dropdown-center text-end">
 
@@ -24,6 +24,7 @@
                             <i class="bi bi-sun"></i>
 
                         </a>
+                    <hr class="dropdown-divider">
                         <a href="{{route('logout')}}" class="dropdown-item link-danger">
                             <i class="bi bi-power"></i>
                             خروج از حساب

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserArticleController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,11 @@ Route::get('search',[SearchController::class,'index'])->name('articles.search');
 Route::middleware('auth')->group(function (){
 
     Route::get('/dark-mode/update',[DarkModeController::class,'update'])->name('dark-mode.update');
+
+    Route::prefix('profile')->controller(ProfileController::class)->group(function (){
+        Route::get('edit','edit')->name('profile.edit');
+        Route::post('update','update')->name('profile.update');
+    });
 
     Route::prefix('{likeable_type}/{likeable_id}')->controller(LikeController::class)->group(function (){
         Route::get('like','like')->name('likes.store');
