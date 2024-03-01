@@ -12,12 +12,12 @@
                 </li>
             </ul>
 
-            <div class="dropdown me-auto">
+            <div class="dropdown  me-auto">
                 <button class="btn dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown">
                     <img src="{{auth()->user()->profile}}" class="rounded-circle border border-2 " style="width: 25px;height: 25px" alt="">
                     {{auth()->user()->name}}
                 </button>
-                <ul class="dropdown-menu dropdown-center text-end">
+                <ul class="dropdown-menu dropdown-menu-sm-start dropdown-menu-end text-end">
 
                     <a href="{{route('dark-mode.update')}}" class="dropdown-item form-check form-switch d-flex align-items-center gap-2 justify-content-center">
                         <i class="bi bi-moon"></i>

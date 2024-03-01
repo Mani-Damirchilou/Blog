@@ -7,7 +7,7 @@
             <img src="{{$article->thumbnail}}" alt="{{$article->title}}" class="card-img-top">
         </div>
         <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column gap-sm-0 gap-4">
                 <div class="d-flex gap-2 align-items-center">
                     <h1>{{$article->title}}</h1>
                     @if(!is_null($article->category))

@@ -11,6 +11,7 @@
                 <span>
                 {{request()->user->name}}
                 </span>
+                <span class="badge text-bg-danger">{{implode('',request()->user->roles->toArray())}}</span>
             </div>
         </div>
         <div class="card-body row g-4">

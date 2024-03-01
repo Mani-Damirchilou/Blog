@@ -1,4 +1,4 @@
-<ul class="nav  nav-tabs justify-content-center flex-sm-row flex-column">
+<ul class="nav  nav-tabs justify-content-center flex-sm-row flex-column p-0">
     <li class="nav-item">
         <a class="nav-link @if(\Illuminate\Support\Facades\Route::is('index')) active @endif" aria-current="page" href="{{route('index')}}">همه</a>
     </li>

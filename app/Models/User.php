@@ -77,4 +77,9 @@ class User extends Authenticatable
     {
         return '/storage/'.Str::substr($this->profile_path,strlen('public/'));
     }
+
+    public function getRelatedArticles()
+    {
+        return $this->articles()->with('views','category','user','tags','likes')->paginate(12);
+    }
 }
