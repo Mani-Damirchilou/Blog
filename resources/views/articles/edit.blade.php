@@ -66,7 +66,7 @@
                 <ul class="list-group list-group-flush p-0">
                     @foreach($tags as $tag)
                         <li class="list-group-item ">
-                            <input {{ $article->tags->contains(function($articleTag) use($tag){ return $articleTag->id === $tag->id; }) ? 'checked' : '' }} type="checkbox" name="tags[]" value="{{$tag->id}}" id="{{$tag->name}}" class="form-check-input">
+                            <input @if($article->tags->contains('id',$tag->id)) checked @endif type="checkbox" name="tags[]" value="{{$tag->id}}" id="{{$tag->name}}" class="form-check-input">
                             <label for="{{$tag->name}}">{{$tag->name}}</label>
                         </li>
                     @endforeach

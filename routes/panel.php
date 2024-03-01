@@ -156,4 +156,4 @@ Route::prefix('panel')->group(function (){
     });
 
 
-});
+})->name('panel');
