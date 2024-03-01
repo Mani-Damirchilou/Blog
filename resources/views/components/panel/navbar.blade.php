@@ -12,9 +12,9 @@
                 </li>
             </ul>
 
-            <div class="me-auto">
+
                 <x-user-navigation/>
-            </div>
+
 
         </div>
     </div>

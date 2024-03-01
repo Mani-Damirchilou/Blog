@@ -1,3 +1,17 @@
+<div class="me-auto d-flex gap-2 align-items-center">
+
+<button data-bs-toggle="modal" data-bs-target="#user-notifications" class="btn btn-primary rounded-3 position-relative btn-sm">
+    <i class="bi bi-bell"></i>
+    @if(!auth()->user()->unreadNotifications->isEmpty())
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{auth()->user()->unreadNotifications->count()}}
+                                <span class="visually-hidden">unread messages</span>
+                          </span>
+    @endif
+</button>
+
+<x-user-notifications/>
+
 <div class="dropdown-center ">
     <button class="btn dropdown-toggle d-flex gap-2 align-items-center" data-bs-toggle="dropdown">
         <img src="{{auth()->user()->profile}}" class="rounded-circle border border-2 " style="width: 25px;height: 25px" alt="">
@@ -39,4 +53,6 @@
         </li>
 
     </ul>
+</div>
+
 </div>

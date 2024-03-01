@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Article;
+use App\Notifications\UserNotification;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleObserver
@@ -12,7 +13,8 @@ class ArticleObserver
      */
     public function created(Article $article): void
     {
-        //
+        $notification = 'مقاله شما با عنوان :'.' '.'"'.$article->title.'"'.' '.'با موفقیت منتشر شد !';
+        $article->user->notify(new UserNotification($notification,'success'));
     }
 
     /**
@@ -23,6 +25,12 @@ class ArticleObserver
         if ($article->isDirty('thumbnail_path'))
         {
             Storage::delete($article->getOriginal('thumbnail_path'));
+        }
+        if ($article->isDirty(['title','category_id','content','thumbnail_path']))
+        {
+            $title = $article->isDirty('title') ? $article->getOriginal('title') : $article->title;
+            $text = 'مقاله شما با عنوان (قبلی) :'.' '.'"'. $title .'"'.' '.'ویرایش شد !';
+            $article->user->notify(new UserNotification($text,'info'));
         }
     }
 

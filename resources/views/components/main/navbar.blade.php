@@ -13,17 +13,10 @@
                     </button>
                 </form>
                 @auth
-                  <div class="me-end d-flex gap-2 align-items-center">
 
-                      <button class="btn btn-primary rounded-3 position-relative btn-sm">
-                          <i class="bi bi-bell"></i>
-                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                12
-                                <span class="visually-hidden">unread messages</span>
-                          </span>
-                      </button>
                       <x-user-navigation/>
-                  </div>
+
+
                 @endauth
                 @guest
                     <div class="d-flex gap-3 me-auto">

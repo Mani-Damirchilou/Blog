@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Observers\CommentObserver;
 use App\Traits\HasPersianDateTime;
 use App\Traits\Likeable;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
+#[ObservedBy(CommentObserver::class)]
 class Comment extends Model
 {
     use HasFactory,Likeable,HasPersianDateTime;

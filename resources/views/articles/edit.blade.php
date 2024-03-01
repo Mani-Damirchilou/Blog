@@ -60,18 +60,21 @@
             <div class="card-header">
                 برچسب ها
             </div>
+            <ul class="list-group list-group-flush p-0">
             @if($tags->isEmpty())
-                هیچ برچسبی وجود ندارد
+                <li class="list-group-item">
+                    هیچ برچسبی وجود ندارد
+                </li>
             @else
-                <ul class="list-group list-group-flush p-0">
                     @foreach($tags as $tag)
                         <li class="list-group-item ">
                             <input @if($article->tags->contains('id',$tag->id)) checked @endif type="checkbox" name="tags[]" value="{{$tag->id}}" id="{{$tag->name}}" class="form-check-input">
                             <label for="{{$tag->name}}">{{$tag->name}}</label>
                         </li>
                     @endforeach
-                </ul>
+
             @endif
+                </ul>
         </div>
 
 

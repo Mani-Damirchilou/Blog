@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Notifications\UserNotification;
 use Illuminate\Support\Facades\Storage;
 
 class UserObserver
@@ -23,6 +24,10 @@ class UserObserver
         if ($user->isDirty('profile_path') && $user->getOriginal('profile_path') !== 'public/profiles/default.png')
         {
             Storage::delete($user->getOriginal('profile_path'));
+        }
+        if ($user->isDirty(['name','email','is_banned']))
+        {
+            $user->notify(new UserNotification('حساب کاربری شما ویرایش شد !','info'));
         }
     }
 

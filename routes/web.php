@@ -6,9 +6,11 @@ use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserArticleController;
+use App\Notifications\UserNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +34,9 @@ Route::get('search',[SearchController::class,'index'])->name('articles.search');
 
 Route::middleware('auth')->group(function (){
 
-    Route::get('/dark-mode/update',[DarkModeController::class,'update'])->name('dark-mode.update');
+    Route::get('dark-mode/update',[DarkModeController::class,'update'])->name('dark-mode.update');
+
+    Route::get('notifications/mark-as-read',[NotificationController::class,'markAsRead'])->name('notifications.mark-as-read');
 
     Route::prefix('profile')->controller(ProfileController::class)->group(function (){
         Route::get('edit','edit')->name('profile.edit');
@@ -60,5 +64,7 @@ Route::middleware('auth')->group(function (){
 
 });
 
+
+Route::get('notification',fn() => auth()->user()->notify(new UserNotification('سلام خسته نباشید !','primary')));
 
 require __DIR__.'/auth.php';

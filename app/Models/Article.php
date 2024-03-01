@@ -84,7 +84,7 @@ class Article extends Model
 
     public function getRelated()
     {
-        return $this->category->articles()->where('id','!=',$this->id)->take(3)->get();
+        return $this->category->articles()->with('category')->active()->where('id','!=',$this->id)->take(3)->get();
     }
 
     public function isViewedByUser()

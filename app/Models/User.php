@@ -80,6 +80,6 @@ class User extends Authenticatable
 
     public function getRelatedArticles()
     {
-        return $this->articles()->with('views','category','user','tags','likes')->paginate(12);
+        return $this->articles()->active()->with('views','category','user','tags','likes')->paginate(12);
     }
 }
