@@ -5,7 +5,7 @@
     <div class="offcanvas-body h-100 p-0">
         <div class="card-header border-0 h-100 border-start rounded-0 d-flex flex-column gap-3 text-nowrap overflow-auto">
             @can('مشاهده داشبرد')
-                <a href="{{route('panel.index')}}" class="btn btn-lg {{Route::is('panel.index') ? 'btn-primary' : ''}}">
+                <a href="{{route('panel.index')}}" class="btn btn-lg {{request()->routeIs('panel.index') ? 'btn-primary' : ''}}">
                     <i class="bi bi-speedometer2"></i>
                     داشبرد
                 </a>
@@ -27,6 +27,12 @@
                 @endcan
                 @can('مشاهده لیست نقش ها')
                     <x-panel.sidebar.roles-button/>
+                @endcan
+                @can('مشاهده لیست گزارشات')
+                    <a href="{{route('logs.index')}}" class="btn btn-lg {{request()->routeIs('logs.index') ? 'btn-primary' : ''}}">
+                        <i class="bi bi-file-earmark-code"></i>
+                        گزارشات
+                    </a>
                 @endcan
                 <hr class="m-0">
                 <a href="{{route('index')}}" class="btn btn-lg btn-outline-danger">

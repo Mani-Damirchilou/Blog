@@ -32,6 +32,9 @@ Route::get('users/{user:name}/articles',[UserArticleController::class,'index'])-
 
 Route::get('search',[SearchController::class,'index'])->name('articles.search');
 
+Route::get('articles/{article}',[ArticleController::class,'show'])->name('articles.show');
+
+
 Route::middleware('auth')->group(function (){
 
     Route::get('dark-mode/update',[DarkModeController::class,'update'])->name('dark-mode.update');
@@ -48,17 +51,10 @@ Route::middleware('auth')->group(function (){
         Route::get('dislike','dislike')->name('dislikes.store');
     });
 
-    Route::prefix('articles')->controller(ArticleController::class)->group(function (){
 
-        Route::prefix('{article}')->group(function (){
+    Route::post('articles/{article}/comments',[CommentController::class,'store'])->name('articles.comments.store');
 
-            Route::get('','show')->name('articles.show');
 
-            Route::post('comments',[CommentController::class,'store'])->name('articles.comments.store');
-
-        });
-
-    });
 
     require __DIR__.'/panel.php';
 

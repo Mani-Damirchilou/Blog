@@ -37,6 +37,7 @@ class PermissionSeeder extends Seeder
             'حذف مقاله',
             'مشاهده لیست نظرات',
             'حذف نظر',
+            'مشاهده لیست گزارشات',
 
 
         ];

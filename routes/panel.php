@@ -155,5 +155,7 @@ Route::prefix('panel')->group(function (){
 
     });
 
+    Route::view('logs','logs.index',['logs' => \App\Models\Log::paginate(15)])->name('logs.index')->middleware('permission:مشاهده لیست گزارشات');
+
 
 })->name('panel');
